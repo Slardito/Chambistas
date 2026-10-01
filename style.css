@@ -120,51 +120,71 @@ body {
   transition: background-color 0.2s ease;
 }
 
-.menu-price-row { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 8px; }
-.menu-price { margin: 0; color: #222; font: 700 16px Arial, sans-serif; }
-.menu-cart-button { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; padding: 0; border-radius: 6px; background: #e14f13; color: #fff; font: 700 24px/1 Arial, sans-serif; text-decoration: none; }
-.menu-cart-button:hover { background: #ba1d00; color: #fff; }
+.menu-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.menu-price {
+  margin: 0;
+  color: #222;
+  font: 700 16px Arial, sans-serif;
+}
+
+.menu-cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 6px;
+  background: #e14f13;
+  color: #fff;
+  font: 700 24px/1 Arial, sans-serif;
+  text-decoration: none;
+}
+
+.menu-cart-button:hover {
+  background: #ba1d00;
+  color: #fff;
+}
 
 /* Controles del carrusel: fondo naranja de la identidad de Gula Pura. */
 #carouselExampleIndicators .carousel-control-prev,
 #carouselExampleIndicators .carousel-control-next {
-  top: 0;
-  bottom: 0;
+  top: 50%;
+  bottom: auto;
   width: 42px;
-  height: auto;
-  margin: auto 0;
-  max-height: 64px;
+  height: 64px;
+  transform: translateY(-50%);
   border-radius: 8px;
   background: #e14f13;
   opacity: 1;
 }
 
-#carouselExampleIndicators .carousel-control-prev { left: 10px; }
-#carouselExampleIndicators .carousel-control-next { right: 10px; }
-#carouselExampleIndicators .carousel-control-prev:hover,
-#carouselExampleIndicators .carousel-control-next:hover { background: #ba1d00; }
+#carouselExampleIndicators .carousel-control-prev {
+  left: 10px;
+}
 
-/* Todos los banners usan el mismo marco para evitar que el carrusel cambie de altura. */
+#carouselExampleIndicators .carousel-control-next {
+  right: 10px;
+}
+
+#carouselExampleIndicators .carousel-control-prev:hover,
+#carouselExampleIndicators .carousel-control-next:hover {
+  background: #ba1d00;
+}
+
+/* Los banners conservan su proporción original para mostrarse completos. */
 #carouselExampleIndicators .carousel-item img {
   display: block;
   width: 100%;
-  height: 420px;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Marco fijo durante el cambio de diapositivas. */
-#carouselExampleIndicators,
-#carouselExampleIndicators .carousel-inner,
-#carouselExampleIndicators .carousel-item {
-  height: 420px;
-}
-
-@media (max-width: 768px) {
-  #carouselExampleIndicators,
-  #carouselExampleIndicators .carousel-inner,
-  #carouselExampleIndicators .carousel-item,
-  #carouselExampleIndicators .carousel-item img { height: 240px; }
+  height: auto;
+  object-fit: contain;
 }
 
 .cart-btn:hover {
@@ -264,7 +284,8 @@ body {
 }
 
 /* Botones de navegación de cada fila de productos. */
-.productos-prev, .productos-next {
+.productos-prev,
+.productos-next {
   position: absolute;
   top: 50%;
   z-index: 2;
@@ -278,9 +299,19 @@ body {
   font: 38px/1 Arial, sans-serif;
   cursor: pointer;
 }
-.productos-prev { left: -8px; }
-.productos-next { right: -8px; }
-.productos-prev:hover, .productos-next:hover { background: #ba1d00; }
+
+.productos-prev {
+  left: -8px;
+}
+
+.productos-next {
+  right: -8px;
+}
+
+.productos-prev:hover,
+.productos-next:hover {
+  background: #ba1d00;
+}
 
 /* Tarjetas de producto */
 .card {
