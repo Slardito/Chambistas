@@ -34,3 +34,44 @@ window.onclick = function(event) {
     modalPrivacidad.style.display = 'none';
   }
 };
+
+/* Productos del menú: precio inicial editable y acceso al carrito. */
+document.querySelectorAll('.card').forEach((tarjeta) => {
+  const nombre = tarjeta.querySelector('.name');
+  const contenido = tarjeta.querySelector('.card-content');
+  if (!nombre || !contenido || contenido.querySelector('.menu-price')) return;
+  const precio = document.createElement('p');
+  precio.className = 'menu-price';
+  precio.textContent = 'S/ 0.00';
+  const boton = document.createElement('a');
+  boton.className = 'menu-cart-button';
+  boton.href = 'Carrito.html';
+  boton.textContent = '+';
+  boton.setAttribute('aria-label', `Agregar ${nombre.textContent.trim()} al carrito`);
+  const filaPrecio = document.createElement('div');
+  filaPrecio.className = 'menu-price-row';
+  filaPrecio.append(precio, boton);
+  contenido.append(filaPrecio);
+});
+
+/* Navegación de las filas de productos sin mostrar la barra de desplazamiento. */
+document.querySelectorAll('.slide-wrapper').forEach((fila) => {
+  const contenedor = fila.closest('.slide-container');
+  if (!contenedor || contenedor.querySelector('.productos-prev')) return;
+
+  const anterior = document.createElement('button');
+  anterior.className = 'productos-prev';
+  anterior.type = 'button';
+  anterior.textContent = '‹';
+  anterior.setAttribute('aria-label', 'Ver productos anteriores');
+
+  const siguiente = document.createElement('button');
+  siguiente.className = 'productos-next';
+  siguiente.type = 'button';
+  siguiente.textContent = '›';
+  siguiente.setAttribute('aria-label', 'Ver más productos');
+
+  anterior.addEventListener('click', () => fila.scrollBy({ left: -520, behavior: 'smooth' }));
+  siguiente.addEventListener('click', () => fila.scrollBy({ left: 520, behavior: 'smooth' }));
+  contenedor.append(anterior, siguiente);
+});
