@@ -1,0 +1,214 @@
+﻿* {
+  box-sizing: border-box;
+}
+
+/* ESTILOS DEL CARRITO - GULA PURA */
+[hidden] {
+  display: none !important;
+}
+
+/* Logo a la izquierda y título centrado en la barra. */
+.navbar-carrito .navbar-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.navbar-carrito .logo {
+  justify-self: start;
+}
+
+.navbar-carrito .titulo-navegacion {
+  grid-column: 2;
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+@media (max-width: 480px) {
+  .navbar-carrito .logo .gulapura-text {
+    font-size: 20px;
+  }
+}
+
+/* Fondo general de la página. */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5ebdc;
+  color: #502b18;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #191919;
+}
+
+main,
+main * {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+main {
+  padding: 0 24px 40px;
+}
+
+/* Estado inicial cuando no hay productos. */
+.estado-vacio {
+  min-height: calc(100vh - 98px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 46px;
+}
+
+/* Ícono SVG del carrito definido en carrito.html. */
+.icono-carrito {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 18px;
+  color: #363636;
+}
+
+.estado-vacio h2 {
+  margin: 0 0 16px;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.estado-vacio p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+/* Botones generales y botón principal. */
+button {
+  border: 0;
+  border-radius: 28px;
+  padding: 14px 24px;
+  background: #E14F13;
+  color: #fff;
+  cursor: pointer;
+  font: 700 14px Arial, sans-serif;
+}
+
+.boton-principal {
+  min-width: 170px;
+  min-height: 48px;
+}
+
+button:hover {
+  background: #ba1d00;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #a97016;
+  outline-offset: 4px;
+}
+
+/* Paneles del catálogo y del pedido. */
+.panel {
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+
+.panel h2 {
+  font-size: 22px;
+}
+
+.nota {
+  font-size: 14px;
+}
+
+/* Catálogo adaptable. */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.producto {
+  padding: 20px;
+  border: 1px solid #dfcdb7;
+  border-radius: 12px;
+}
+
+.producto h3 {
+  margin-top: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* Producto agregado y controles de cantidad. */
+.fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #dfcdb7;
+}
+
+.controles,
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.controles button {
+  padding: 8px 12px;
+}
+
+.total {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Ajustes para tablet y pantallas pequeñas. */
+@media (max-width: 900px) {
+  .navbar-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .nav-links,
+  .navbar-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+/* En teléfonos, los controles se apilan. */
+@media (max-width: 500px) {
+  .fila {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .estado-vacio {
+    padding-bottom: 30px;
+  }
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
   <!-- Se establecio comunicacón con app.js (Java Script) -->
   <script src="app.js" defer></script>
 </head>
+
 <body>
   <header class="navbar">
     <div class="navbar-container">
@@ -41,8 +43,19 @@
             </a>
           </div>
         </div>
-        <!-- Esto aun esta en desarrollo, para luego poder definir la compra en la misma página web -->
-        <!-- <a href="#" class="cart-btn">S/ 0.00</a> -->
+        <!-- Botón de carrito de compras -->
+        <a href="Carrito.html" class="cart-btn" aria-label="Ver carrito, 0 productos, total S/ 0.00">
+          <span class="cart-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 5h4l4 17h15M9 10h20l-3 9H11" />
+              <circle cx="13" cy="27" r="1" fill="currentColor" />
+              <circle cx="25" cy="27" r="1" fill="currentColor" />
+            </svg>
+            <span class="cart-count" aria-hidden="true">0</span>
+          </span>
+          <span class="cart-amount" aria-hidden="true">S/ 0.00</span>
+        </a>
       </div>
     </div>
   </header>
@@ -202,7 +215,7 @@
             </div>
             <div class="card-content">
               <h6 class="name">Hamburguesa Hawaiana</h6>
-              
+
             </div>
           </div>
 
@@ -294,7 +307,7 @@
               <h6 class="name">Alitas Bufalo</h6>
             </div>
             <div>
-              <h6 class="price">Precio:   S/3.00</h6>
+              <h6 class="price">Precio: S/3.00</h6>
             </div>
           </div>
 
@@ -735,7 +748,7 @@
         <img src="img/logo-icon/gula_pura_logotipo.png" alt="Logo Gula Pura" class="footer-logo-img">
       </a>
 
-      <!--  Esto por el momento se encuentra en proceso 
+      <!--  Esto por el momento se encuentra en proceso
   <p>Síguenos en</p>
   <div class="social-icons">
     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
