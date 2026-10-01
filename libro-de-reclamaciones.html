@@ -1,0 +1,184 @@
+<!-- Aqui se coloco toda la información para que se reemplaze nuestra actual ventana a la de Libro de reclamaciones -->
+<!-- Osea que nos lleva a Libro de reclamaciones presionando un boton, pero de igual manera presionando otro boton, nos permite retornar -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libro de Reclamaciones - Gúla Pura</title>
+  <!-- Aqui esta todo el código referente a CSS -->
+  <style>
+    body {
+      background-color: #181818;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #222222;
+      padding: 30px;
+      border-radius: 10px;
+      border: 1px solid #333;
+    }
+
+    .header-reclamaciones {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #ffcc00;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .btn-volver {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-volver:hover {
+      text-decoration: underline;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background: #111;
+      color: #fff;
+      box-sizing: border-box;
+    }
+
+    .row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .row .form-group {
+      flex: 1;
+    }
+
+    .btn-enviar {
+      background-color: #ff3333;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 15px;
+      text-transform: uppercase;
+    }
+
+    .btn-enviar:hover {
+      background-color: #cc0000;
+    }
+  </style>
+  <!-- Aqui esta todo el código referente a HTML -->
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header-reclamaciones">
+      <h2>LIBRO DE RECLAMACIONES</h2>
+      <a href="index.html" class="btn-volver">&larr; Volver a la web</a>
+    </div>
+
+    <p style="font-size: 0.85rem; color: #aaa;">
+      GÚLA PURA S.A.C. <br>
+      Conforme a lo establecido en el Código de Protección y Defensa del Consumidor.
+    </p>
+
+    <form id="form-reclamos" onsubmit="enviarReclamo(event)">
+      <h3>1. Identificación del Consumidor Reclamante</h3>
+      <div class="form-group">
+        <label>Nombre Completo *</label>
+        <input type="text" required placeholder="Ej. Juan Pérez">
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label>Tipo de Documento *</label>
+          <select required>
+            <option value="DNI">DNI</option>
+            <option value="CE">Carnet de Extranjería</option>
+            <option value="Pasaporte">Pasaporte</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Número de Documento *</label>
+          <input type="text" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label>Teléfono *</label>
+          <input type="tel" required>
+        </div>
+        <div class="form-group">
+          <label>Correo Electrónico *</label>
+          <input type="email" required>
+        </div>
+      </div>
+
+      <h3>2. Detalle de la Reclamación</h3>
+      <div class="form-group">
+        <label>Tipo *</label>
+        <select required>
+          <option value="Reclamo">Reclamo (Disconformidad relacionada a los productos o servicios)</option>
+          <option value="Queja">Queja (Disconformidad no relacionada directamente a los productos o malestar en la
+            atención)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Monto del bien contratado (S/)</label>
+        <input type="number" step="0.01" placeholder="0.00">
+      </div>
+
+      <div class="form-group">
+        <label>Detalle del reclamo o queja *</label>
+        <textarea rows="4" required placeholder="Describe lo sucedido..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Pedido del consumidor *</label>
+        <textarea rows="2" required placeholder="¿Qué solución esperas?"></textarea>
+      </div>
+
+      <button type="submit" class="btn-enviar">Registrar Reclamo</button>
+    </form>
+  </div>
+  <!-- Aqui esta todo el código referente a Java Script -->
+  <script>
+    function enviarReclamo(e) {
+      e.preventDefault();
+      alert('¡Reclamo registrado correctamente! Nos pondremos en contacto contigo.');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,466 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial Black', Impact, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+}
+
+/* Contenedor generals */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* -- Navbar -- */
+.navbar {
+  background-image: url('https://media.istockphoto.com/id/2155502644/es/foto/fondo-de-pared-de-hormig%C3%B3n-negro-oscuro-patr%C3%B3n-tablero-de-cemento-textura-grunge-sucio-rayado.jpg?s=612x612&w=0&k=20&c=M6zVuRBpAifVg0nw0QAFx66Hq777SYCjK_7OEoNGsIk=');
+  background-size: cover;
+  background-position: center;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+/* -- Logo -- */
+.logo {
+  text-decoration: none;
+}
+
+.logo .gulapura-text {
+  font-size: 28px;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+
+/* Navegación central */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-item {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #ffcc00;
+}
+
+/* Acciones a la derecha */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.phone-info,
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.phone-text,
+.user-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  font-size: 11px;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+}
+
+.phone-text .number,
+.user-text strong {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.cart-btn {
+  background-color: #262626;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.cart-btn:hover {
+  background-color: #ff3333;
+}
+
+/* -- 3. Secciones (MENÚ, COMBOS, PROMOS) -- */
+.MENU, .COMBOS, .PROMOS {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 15px 10px 15px;
+}
+
+.MENU h2, .COMBOS h2, .PROMOS h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #111;
+  text-transform: uppercase;
+}
+
+.MENU h5, .COMBOS h5, .PROMOS h5 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff9900;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+/* Slider horizontal para tarjetas de productos */
+.slide-container {
+  width: 100%;
+}
+.slide-content {
+  width: 100%;
+}
+.slide-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 15px 5px;
+  scroll-behavior: smooth;
+}
+/* Personalización del scrollbar del slider */
+.slide-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+
+.slide-wrapper::-webkit-scrollbar-thumb {
+  background: #ffcc00;
+  border-radius: 15px;
+}
+
+.slide-wrapper::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 15px;
+}
+
+/* Tarjetas de producto */
+.card {
+  flex: 0 0 240px; /* Ancho fijo uniforme para la tarjeta */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  padding: 20px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eaeaea;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* -- Ajuste de las tarjetas e imagenes -- */
+.image-content {
+  width: 100%;
+  margin-bottom: 12px;
+}
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 180px; 
+  border-radius: 8px; /* Bordes curvos */
+  overflow: hidden;
+  background-color: #f8f8f8;
+}
+/* La imagen se ajusta al 100% */
+.card-image .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+/* Información debajo de la comida */
+.card-content {
+  text-align: center;
+  width: 100%;
+  padding: 5px 0;
+}
+.card-content .name {
+  font-size: 0.9rem;
+  color: #111111;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+/* Estilo para el precio que se coloque debajo, pero por el momento esto no se va habilitar */
+.card-content .descripcion {
+  font-size: 1.1rem;
+  color: #ff3333;
+  font-weight: 900;
+}
+
+/* -- Footer -- */
+.site-footer {
+  background-color: #181818;
+  padding: 60px 20px 30px 20px;
+  border-top: 1px solid #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+}
+.footer-logo-img {
+  max-width: 160px;
+  height: auto;
+  display: block;
+}
+.footer-column h3 {
+  font-size: 0.95rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: Arial, sans-serif;
+  transition: all 0.2s ease;
+}
+.footer-column ul li a:hover {
+  color: #ff3333;
+  padding-left: 3px;
+}
+/* Libro de reclamaciones */
+.libro-img {
+  width: 120px; 
+  height: auto;
+  display: block;
+  background: #ffffff;
+  padding: 6px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+.feedback-container {
+  margin-top: 20px;
+  border-top: 1px dashed #e0e0e0;
+  padding-top: 15px;
+  max-width: 260px;
+}
+.feedback-container h3 {
+  font-size: 0.9rem;
+  color: white;
+  text-transform: none;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.feedback-text {
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.btn-sugerencias {
+  display: inline-block;
+  background-color: #D9320D;
+  color: #000000;
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(255, 204, 0, 0.2);
+  transition: all 0.2s ease;
+}
+.btn-sugerencias:hover {
+  background-color: #ff3333;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(255, 51, 51, 0.3);
+  transform: translateY(-1px);
+}
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0 auto;
+  padding-top: 25px;
+  border-top: 1px solid #f0f0f0;
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: Arial, sans-serif;
+  color: #888888;
+}
+.feedback-container {
+  margin-top: 15px;
+  border-top: none; 
+  padding-top: 0;
+}
+/* Estilo del botón verde para hacer referencia a Whatsapp */
+.btn-pedido {
+  display: inline-block;
+  background-color: #2ab45d; 
+  color: #ffffff !important;  
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+  transition: all 0.2s ease;
+}
+
+/* Efecto al pasar el cursor */
+.btn-pedido:hover {
+  background-color: #1a572f; 
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+  transform: translateY(-1px);
+  padding-left: 16px !important; 
+}
+
+
+/* --- Terminos y condicicones --- */
+.modal-contenido h2 {
+  text-align: center;      
+  margin-top: 10px;        /* Margen superior */
+  margin-bottom: 20px;     /* Margen inferior */
+  padding-right: 25px;     /* Espacio a la derecha */
+  padding-left: 25px;      /* Espacio a la izquierda */
+}
+/* Fondo oscuro translúcido */
+.modal-overlay {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+/* Caja de contenido de la ventana flotante */
+.modal-contenido {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  font-family: Arial, sans-serif;
+}
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-top: 15px;
+  padding-right: 10px;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+.modal-body h3 {
+  font-size: 1rem;
+  color: #ff3333;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+/* Botón para cerrar las ventanas flotantes */
+.btn-cerrar {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-cerrar:hover {
+  color: #ff3333;
+}
+/* Politicas de Privacidad */
+/* Centrado y márgenes para los títulos */
+.modal-contenido h2 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.modal-body ul {
+  padding-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.modal-body ul li {
+  list-style-type: disc;
+  color: #dddddd;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}

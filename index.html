@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gula Pura</title>
+  <link rel="icon" href="img/logo-icon/icon_gula_pura.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <!-- Se realizo una vinculación con style.css (CSS) -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Se establecio comunicacón con app.js (Java Script) -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-container">
+      <!-- Logo GULA PURA -->
+      <a href="#" class="logo">
+        <span class="gulapura-text">GULA PURA</span>
+      </a>
+      <!-- Menú de navegación principal -->
+      <nav class="nav-links">
+        <a href="#MENU" class="nav-item">MENÚ</a>
+        <a href="#COMBOS" class="nav-item">COMBOS</a>
+        <a href="#PROMOS" class="nav-item">PROMOS EXCLUSIVAS</a>
+      </nav>
+      <!-- Sección de contacto y compra -->
+      <div class="navbar-actions">
+        <div class="phone-info">
+          <div class="phone-text">
+            <span class="label">Llámanos</span>
+            <span class="number">957 059 897</span>
+          </div>
+        </div>
+        <div class="user-info">
+          <div class="user-text">
+            <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" target="_blank"
+              rel="noopener noreferrer" class="link-pedido">
+              <strong>Realiza tu pedido</strong>
+            </a>
+          </div>
+        </div>
+        <!-- Esto aun esta en desarrollo, para luego poder definir la compra en la misma página web -->
+        <!-- <a href="#" class="cart-btn">S/ 0.00</a> -->
+      </div>
+    </div>
+  </header>
+  <!-- Carrusel - Banners -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+        aria-label="Slide 4"></button>
+    </div>
+    <!-- Bueno aqui se colocaron los 4 respectivos Banners referente a nuestra idea de página -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/banners/Banner_1_gp.jfif" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/banners/Banner_2_gp.jfif" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/banners/Banner_3_gp.jfif" class="d-block w-100" alt="...">>
+      </div>
+      <div class="carousel-item">
+        <img src="img/banners/Banner_4_gp.jfif" class="d-block w-100" alt="...">>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <section class="MENU" id="MENU">
+    <br>
+    <h2> MIRA NUESTRO MENÚ - GULA PURA</h2>
+
+    <!-- Hamburguesas -->
+    <h5>NUESTRAS HAMBURGUESAS</h5>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+
+          <!-- Tarjeta 1: Hamburguesa con Queso -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa con Queso.jpg" alt="Hamburguesa con Queso" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa con Queso</h6>
+              <h6 class="descripcion">Precio:</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: La Golosa -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Doble Carne & Cheese.jpg"
+                  alt="Hamburguesa Doble Carne & Cheese" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Doble Carne & Cheese</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3: Hamburguesa Extra Tocino & Cheese -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Extra Tocino & Cheese.jpg"
+                  alt="Hamburguesa Extra Tocino & Cheese" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Extra Tocino & Cheese</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 4: Hamburguesa Parrillera -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Parrillera.jpg" alt="Hamburguesa Parrillera"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Parrillera</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 5: Hamburguesa a la Pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa a la Pobre.jfif" alt="Hamburguesa a la Pobre"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa a la Pobre</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 6: Hamburguesa Doble Carne -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Doble Carne.jfif" alt="Hamburguesa Doble Carne"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Doble Carne</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 7: Hamburguesa Gringa -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Gringa.jfif" alt="Hamburguesa Gringa" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Gringa</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 8: Hamburguesa Hawaiana -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Hawaiana.jfif" alt="Hamburguesa Hawaiana" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Hawaiana</h6>
+              
+            </div>
+          </div>
+
+          <!-- Tarjeta 9: Hamburguesa Simple -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Simple.jfif" alt="Hamburguesa Simple" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Simple</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 10: Hamburguesa Triple Cheese -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Triple cheese.jfif" alt="Hamburguesa Triple Cheese"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Triple Cheese</h6>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- Alitas -->
+    <h5>NUESTRAS ALITAS</h5>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+
+          <!-- Tarjeta 1: Alitas Simples -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas Simples.jfif" alt="Alitas Simples" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas Simples</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: Alitas BBQ Picante -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas_BBQ_Picante.jfif" alt="Alitas BBQ Picante" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas BBQ Picante</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3: Alitas BBQ -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas_BBQ.jfif" alt="Alitas BBQ" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas BBQ</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 4: Alitas Bufalo -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas Bufalo.jfif" alt="Alitas Bufalo" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas Bufalo</h6>
+            </div>
+            <div>
+              <h6 class="price">Precio:   S/3.00</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 5: Alitas al Olivo -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas al Olivo.jfif" alt="Alitas al Olivo" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas al Olivo</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 6: Alitas Acevichadas -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas Acevichadas.jfif" alt="Alitas Acevichadas" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas Acevichadas</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 7: Alitas Ajo Parmesano -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas Ajo Parmesano.jpg" alt="Alitas Ajo Parmesano" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas Ajo Parmesano</h6>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- Shawarmas -->
+    <h5>NUESTROS SHAWARMAS</h5>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+
+          <!-- Tarjeta 1: Shawarma de Lomo Saltado -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Lomo Saltado.jpg" alt="Shawarma de Lomo Saltado" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma de Lomo Saltado</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: Shawarma a lo pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma a lo pobre.jfif" alt="Shawarma a lo pobre" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma a lo pobre</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3: Shawarma de Carne -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Carne.jfif" alt="Shawarma de Carne" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma de Carne</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 4: Shawarma Mediterraneo -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Mediterraneo.jfif" alt="Shawarma Mediterraneo" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma Mediterraneo</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 5: Shawarma Pollo Crunchy -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Pollo Crunchy.jfif" alt="Shawarma Pollo Crunchy" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma Pollo Crunchy</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 6: Shawarma de Pollo -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Pollo.jfif" alt="Shawarma de Pollo" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma de Pollo</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 7: Shawarma Simple -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Simple.jfif" alt="Shawarma Simple" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma Simple</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 8: Shawarma Vegetariano  -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Vegetariano.jfif" alt="Shawarma Vegetariano" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma Vegetariano</h6>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- Bebidas -->
+    <h5> Bebidas </h5>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+
+          <!-- Tarjeta 1: Coca Cola -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Coca_Cola.png" alt="Coca Cola" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Coca Cola</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: Inca Kola -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Inca_Kola.png" alt="Inca Kola" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Inca Cola</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3: Sprite -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Sprite.png" alt="Sprite" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Sprite</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 4: Refresco Maracuya -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Refresco_Maracuya.png" alt="Refresco Maracuya" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Refresco Maracuya</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 5: Chicha Morada -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Chicha_Morada.png" alt="Refresco Chicha Morada" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Chicha Morada</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 6: Agua -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Agua.png" alt="Agua" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Agua</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </section>
+  <section class="COMBOS" id="COMBOS">
+    <!-- Combos Gula Pura -->
+    <h2>¡INCREIBLES COMBOS! - GULA PURA</h2>
+    <br>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+
+          <!-- Tarjeta 1: Combo a la pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_a_la_pobre.png" alt="Combo a la pobre" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo a la pobre</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: Combo Alaraco -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Alaraco.png" alt="Combo Alaraco" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Alaraco</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3: Combo Broaster a la Pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Broaster_a_lo_pobre.png" alt="Combo Broaster a la Pobre" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Broaster a la Pobre</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 4: Combo Extra Cheese -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Extra_Cheese.png" alt="Combo Extra Cheese" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Extra Cheese</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 5: Combo Hawaiano -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Hawaiano.png" alt="Combo Hawaiano" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Hawaiano</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 6: Combo Parrillero -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Parrillero.png" alt="Combo Parrillero" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Parrillero</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 7: Combo Tocino -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Tocino.png" alt="Combo Tocino" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Tocino</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+  <br>
+  <section class="PROMOS" id="PROMOS">
+    <!-- Promociones Gula Pura -->
+    <h2> ¡SUPER PROMOCIONES! - GULA PURA</h2>
+    <br>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+
+          <!-- Tarjeta 1: Duo Alaraco -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Duo_alaraco.png" alt="Duo Alaraco" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Duo Alaraco</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: Duo Broaster -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Duo_Broaster.png" alt="Duo Broaster" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Duo Broaster</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3: Trio Doble carne y queso -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Trio_dobleburger_cheese.png" alt="Trio Doble carne y queso" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Trio Doble carne y queso</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 4: Trio Hamburguesa a la pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Trio_Hamburguesa_a_la_pobre.png" alt="Trio Hamburguesa a la pobre"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Trio Hamburguesa a la pobre</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 5: Trio Hawaiano -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Trio_Hawaiano.png" alt="Trio Hawaiano" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Trio Hawaiano</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+</body>
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Columna 1: Logo y Redes -->
+    <div class="footer-column brand-column">
+      <a href="/" class="footer-logo-link">
+        <img src="img/logo-icon/gula_pura_logotipo.png" alt="Logo Gula Pura" class="footer-logo-img">
+      </a>
+
+      <!--  Esto por el momento se encuentra en proceso 
+  <p>Síguenos en</p>
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+  -->
+    </div>
+
+    <!-- Columna 2: Nuestros Productos -->
+    <div class="footer-column">
+      <h3>Nuestros Productos</h3>
+      <ul>
+        <li><a href="#MENU">Nuestra Carta </a></li>
+        <li><a href="#COMBOS">Combos Salvajes</a></li>
+        <li><a href="#PROMOS">Super Promociones</a></li>
+      </ul>
+    </div>
+    <!-- Columna 3: Ayuda -->
+    <div class="footer-column">
+      <h3>Ayuda</h3>
+      <ul>
+        <!-- Funciones específicas para abrir cada modal -->
+        <li><a href="#" onclick="abrirModalTerminos(event)">Términos y condiciones</a></li>
+        <li><a href="#" onclick="abrirModalPrivacidad(event)">Políticas de privacidad</a></li>
+        <li class="item-contacto">
+          <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank"
+            rel="noopener noreferrer">
+            Contacto: 957 059 897
+          </a>
+        </li>
+
+        <li class="feedback-container">
+          <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" class="btn-pedido"
+            target="_blank" rel="noopener noreferrer">
+            Realiza tu pedido
+          </a>
+        </li>
+      </ul>
+
+      <!-- Ventana flotante : Términos y Condiciones -->
+      <div id="modal-terminos" class="modal-overlay">
+        <div class="modal-contenido">
+          <!-- Aqui se puede ver reflejado un boton para poder cerrar la ventana flotante de Términos y Condiciones -->
+          <span class="btn-cerrar" onclick="cerrarModalTerminos()">&times;</span>
+          <h2>Términos y Condiciones - Gúla Pura</h2>
+          <div class="modal-body">
+            <p>Bienvenido a <strong>Gúla Pura</strong>. A continuación, te presentamos las condiciones que rigen el uso
+              de nuestro sitio web y el proceso de atención y pedidos a través de nuestro canal oficial de
+              <strong>WhatsApp</strong>.
+            </p>
+
+            <h3>1. Canal Oficial de Ventas y Pedidos</h3>
+            <p>Nuestro sitio web funciona como una carta digital interactiva e informativa. El proceso de compra,
+              cotización, selección de productos, confirmación de dirección y pago se gestiona exclusivamente a través
+              de nuestro canal oficial de WhatsApp.</p>
+
+            <h3>2. Cobertura, Envíos y Horarios</h3>
+            <p>La confirmación de si tu dirección se encuentra dentro de nuestra zona de cobertura de delivery se
+              realizará directamente en el chat de WhatsApp al momento de compartir tu ubicación. La atención está
+              sujeta al horario de nuestras cocinas.</p>
+
+            <h3>3. Medios de Pago</h3>
+            <p>Los pagos se coordinan por WhatsApp e incluyen Yape, Plin, transferencias bancarias o efectivo contra
+              entrega (indicando el monto con el que abonarás para llevar el cambio exacto).</p>
+
+            <h3>4. Comprobantes y Libro de Reclamaciones</h3>
+            <p>Puedes solicitar Boleta o Factura electrónica en el chat de WhatsApp. Asimismo, nuestro Libro de
+              Reclamaciones Virtual se encuentra disponible en la parte inferior de la web.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ventana Flotante : Políticas de Privacidad -->
+      <div id="modal-privacidad" class="modal-overlay">
+        <div class="modal-contenido">
+          <!-- Aqui se puede ver reflejado un boton para poder cerrar la ventana flotante de Politicas de Privacidad -->
+          <span class="btn-cerrar" onclick="cerrarModalPrivacidad()">&times;</span>
+          <h2>Políticas de Privacidad - Gúla Pura</h2>
+          <div class="modal-body">
+            <p>En <strong>Gúla Pura</strong> nos comprometemos a proteger la privacidad de tus datos personales conforme
+              a la <strong>Ley N° 29733 (Ley de Protección de Datos Personales del Perú)</strong>.</p>
+
+            <h3>1. Datos Personales Recopilados</h3>
+            <p>Al realizar tus pedidos a través de WhatsApp, podemos solicitarte datos como: nombre completo, número de
+              teléfono, dirección de entrega y datos de facturación.</p>
+
+            <h3>2. Finalidad del Tratamiento de Datos</h3>
+            <p>Tus datos son utilizados exclusivamente para:</p>
+            <ul>
+              <li>Procesar, preparar y coordinar la entrega (delivery) de tus pedidos.</li>
+              <li>Emitir y enviarte el comprobante de pago electrónico correspondiente (Boleta/Factura).</li>
+              <li>Atender consultas o sugerencias enviadas a través de nuestros canales de atención.</li>
+            </ul>
+
+            <h3>3. Confidencialidad y Seguridad</h3>
+            <p>Tus datos personales no serán comercializados ni cedidos a terceros sin tu consentimiento previo, salvo
+              con el personal encargado del reparto o por requerimiento de la autoridad competente.</p>
+
+            <h3>4. Derechos ARCO</h3>
+            <p>Como titular de tus datos personales, puedes ejercer tus derechos de acceso, rectificación, cancelación u
+              oposición escribiéndonos directamente a nuestro canal de WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Columna 4: Contacto & Atención al Cliente (Libro y Sugerencias) -->
+    <div class="footer-column legal-column">
+      <h3>RECLAMOS & SUGERENCIAS</h3>
+
+      <!-- 1. Libro de Reclamaciones vinculada a libro-de-reclamaciones.html -->
+      <a href="libro-de-reclamaciones.html">
+        <img src="img/footer/Libro_reclamos.png" alt="Libro de Reclamaciones" class="libro-img">
+      </a>
+
+      <!-- 2. Sugerencias conectado a un Formulario de google -->
+      <div class="feedback-container">
+        <h3>Tu Opinión Cuenta</h3>
+        <p class="feedback-text">¿Tienes alguna idea o sugerencia para nosotros? Queremos escucharte.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGWHN5Qboh4pLPVPXL78QI0LmWeiwGPB_7sudZl1JCkc1D7g/viewform?usp=header"
+          class="btn-sugerencias" target="_blank" rel="noopener noreferrer">
+          Dejar sugerencia
+        </a>
+      </div>
+    </div>
+    <!-- En el pie del footer se colocaron los Derechos Reservados -->
+    <div class="footer-bottom" id="footer-bottom">
+      <span>&copy; 2026 Gula Pura. Todos los derechos reservados.</span>
+    </div>
+</footer>
+
+</html>
