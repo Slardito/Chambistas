@@ -1,0 +1,763 @@
+<style>
+    
+.MENU h5,
+.COMBOS h5,
+.PROMOS h5 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff9900;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+/* Slider horizontal para tarjetas de productos */
+.slide-container {
+  position: relative;
+  width: 100%;
+}
+
+.slide-content {
+  width: 100%;
+}
+
+.slide-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 15px 5px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+/* Oculta la barra del slider; se navega con los botones laterales. */
+.slide-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Botones de navegación de cada fila de productos. */
+.productos-prev, .productos-next {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 38px;
+  height: 64px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 8px;
+  background: #e14f13;
+  color: #fff;
+  font: 38px/1 Arial, sans-serif;
+  cursor: pointer;
+}
+.productos-prev { left: -8px; }
+.productos-next { right: -8px; }
+.productos-prev:hover, .productos-next:hover { background: #ba1d00; }
+
+/* Tarjetas de producto */
+.card {
+  flex: 0 0 240px;
+  /* Ancho fijo uniforme para la tarjeta */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  padding: 20px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eaeaea;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* -- Ajuste de las tarjetas e imagenes -- */
+.image-content {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  /* Bordes curvos */
+  overflow: hidden;
+  background-color: #f8f8f8;
+}
+
+/* La imagen se ajusta al 100% */
+.card-image .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Información debajo de la comida */
+.card-content {
+  text-align: left;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.card-content .name {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #111111;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+/* Estilo para el precio que se coloque debajo, pero por el momento esto no se va habilitar */
+.card-content .descrip {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 0.7rem;
+  width: 100%;
+  color: #8C5920;
+  font-weight: 800;
+  padding: 5px 0;
+}
+</style>
+<body>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <section class="carta" id="carta">
+    <br>
+    <h2>Nuestra carta</h2>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+          <!-- Tarjeta 1: Hamburguesa con Queso -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa con Queso.jpg" alt="Hamburguesa con Queso" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-content">
+                <h6 class="name">Hamburguesa con Queso</h6>
+                <h6 class="descrip">Hamburguesa con carne, tocino crujiente y queso derretido + papas</h6>
+              </div>
+            </div>
+          </div>
+          <!-- Tarjeta 2: Hamburguesa Doble Carne & Cheese -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Doble Carne & Cheese.jpg"
+                  alt="Hamburguesa Doble Carne & Cheese" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Doble Carne & Cheese</h6>
+              <h6 class="descrip">Hamburguesa con + 2 carne y queso derretido + papas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 3: Hamburguesa Extra Tocino & Cheese -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Extra Tocino & Cheese.jpg"
+                  alt="Hamburguesa Extra Tocino & Cheese" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Extra Tocino & Cheese</h6>
+              <h6 class="descrip">Hamburguesa con carne, tocino crujiente y queso derretido + papas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 4: Hamburguesa Parrillera -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Parrillera.jpg" alt="Hamburguesa Parrillera"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Parrillera</h6>
+              <h6 class="descrip">Hamburguesa con carne, chorizo, cebolla caramelizada y queso derretido + papas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 5: Hamburguesa a la Pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa a la Pobre.jfif" alt="Hamburguesa a la Pobre"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa a la Pobre</h6>
+              <h6 class="descrip">Hamburguesa con +2 carnes, huevo frito y cebolla caramelizada + papas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 6: Hamburguesa Doble Carne -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Doble Carne.jfif" alt="Hamburguesa Doble Carne"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Doble Carne</h6>
+              <h6 class="descrip">Hamburguesa con +2 carnes + papas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 7: Hamburguesa Gringa -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Gringa.jfif" alt="Hamburguesa Gringa" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Gringa</h6>
+              <h6 class="descrip">Hamburguesa con +2 carnes, chorizo parrillero + papas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 8: Hamburguesa Hawaiana -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Hawaiana.jfif" alt="Hamburguesa Hawaiana" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Hawaiana</h6>
+              <h6 class="descrip">Hamburguesa con carne, piña y queso derretido + papas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 9: Hamburguesa Simple -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Simple.jfif" alt="Hamburguesa Simple" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Simple</h6>
+              <h6 class="descrip">Hamburguesa con carne + papas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 10: Hamburguesa Triple Cheese -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Hamburguesas/Hamburguesa Triple cheese.jfif" alt="Hamburguesa Triple Cheese"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Hamburguesa Triple Cheese</h6>
+              <h6 class="descrip">Hamburguesa con +2 carnes y demasiado queso + papas</h6>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+          <!-- Tarjeta 1: Alitas Simples -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas Simples.jfif" alt="Alitas Simples" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas Simples</h6>
+              <h6 class="descrip">6 Alitas Crujientes</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: Alitas BBQ Picante -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas_BBQ_Picante.jfif" alt="Alitas BBQ Picante" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas BBQ Picante</h6>
+              <h6 class="descrip">6 Alitas Bañadas en Salsa BBQ Picante</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3: Alitas BBQ -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas_BBQ.jfif" alt="Alitas BBQ" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas BBQ</h6>
+              <h6 class="descrip">6 Alitas Bañadas en Salsa BBQ</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 4: Alitas Bufalo -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas Bufalo.jfif" alt="Alitas Bufalo" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas Bufalo</h6>
+              <h6 class="descrip">6 Alitas Bañadas en Salsa Búfalo</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 5: Alitas al Olivo -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas al Olivo.jfif" alt="Alitas al Olivo" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas al Olivo</h6>
+              <h6 class="descrip">6 Alitas Bañadas en Salsa al Olivo</h6>
+            </div>
+          </div>
+
+          <!-- Tarjeta 6: Alitas Acevichadas -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas Acevichadas.jfif" alt="Alitas Acevichadas" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas Acevichadas</h6>
+              <h6 class="descrip">6 Alitas Bañadas en Salsa Acevichada</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 7: Alitas Ajo Parmesano -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Alitas/Alitas Ajo Parmesano.jpg" alt="Alitas Ajo Parmesano" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Alitas Ajo Parmesano</h6>
+              <h6 class="descrip">6 Alitas Bañadas en Salsa Ajo Parmesano</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+          <!-- Tarjeta 1: Shawarma de Lomo Saltado -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Lomo Saltado.jpg" alt="Shawarma de Lomo Saltado" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma de Lomo Saltado</h6>
+              <h6 class="descrip">Jugosos trozos de lomo saltado al wok con cebolla y tomate wrapped</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 2: Shawarma a lo pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma a lo pobre.jfif" alt="Shawarma a lo pobre" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma a lo pobre</h6>
+              <h6 class="descrip">Carne, plátano frito, huevo y papas fritas envueltos en pan pita</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 3: Shawarma de Carne -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Carne.jfif" alt="Shawarma de Carne" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma de Carne</h6>
+              <h6 class="descrip">Clásicas tiras de carne sazonada a la parrilla con cremas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 4: Shawarma Mediterraneo -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Mediterraneo.jfif" alt="Shawarma Mediterraneo" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma Mediterraneo</h6>
+              <h6 class="descrip">Tiras de carne con vegetales frescos y un toque de finas hierbas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 5: Shawarma Pollo Crunchy -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Pollo Crunchy.jfif" alt="Shawarma Pollo Crunchy" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma Pollo Crunchy</h6>
+              <h6 class="descrip">Trozos de pollo súper crujientes con lechuga, papas y cremas</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 6: Shawarma de Pollo -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Pollo.jfif" alt="Shawarma de Pollo" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma de Pollo</h6>
+              <h6 class="descrip">Láminas de pollo asado sazonadas al estilo tradicional</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 7: Shawarma Simple -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Simple.jfif" alt="Shawarma Simple" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma Simple</h6>
+              <h6 class="descrip">La combinación clásica y ligera de carne y vegetales</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 8: Shawarma Vegetariano  -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Shawarmas/Shawarma Vegetariano.jfif" alt="Shawarma Vegetariano" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Shawarma Vegetariano</h6>
+              <h6 class="descrip">Mix de vegetales frescos, palta y tofu frito</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+          <!-- Tarjeta 1: Coca Cola -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Coca Cola.webp" alt="Coca Cola" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Coca Cola 500 ml</h6>
+              <h6 class="descrip">Coca Cola 500 ml</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 2: Inca Kola -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Inka Cola.webp" alt="Inca Kola" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Inca Cola 500 ml</h6>
+              <h6 class="descrip">Inca Cola 500 ml</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 3: Sprite -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Sprite.webp" alt="Sprite" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Sprite 500 ml</h6>
+              <h6 class="descrip">Sprite 500 ml</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 4: Fanta -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Fanta.webp" alt="Fanta" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Fanta 500 ml</h6>
+              <h6 class="descrip">Fanta 500 ml</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 5: Pepsi -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Pepsi.jpg" alt="Pepsi" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Pepsi 500 ml</h6>
+              <h6 class="descrip">Pepsi 500 ml</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 6: Agua San Luis Sin Gas 625 ml -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Agua sin gas - San Luis.webp " alt="Agua San Luis Sin Gas 625 ml"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Agua San Luis Sin Gas 625 ml</h6>
+              <h6 class="descrip">Agua San Luis Sin Gas 625 ml</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 7: Agua San Luis Con Gas 625 ml -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Menu/Bebidas/Agua con gas.jpg" alt="Agua San Luis Con Gas 625 ml" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Agua San Luis Con Gas 625 ml</h6>
+              <h6 class="descrip">Agua San Luis Con Gas 625 ml</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+          <!-- Tarjeta 1: Combo a la pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_a_la_pobre.png" alt="Combo a la pobre" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo a lo pobre</h6>
+              <h6 class="descrip">1 Hamburguesa A la Pobre + 1 Papa Regular + 1 Bebida Personal</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 2: Combo Alaraco -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Alaraco.png" alt="Combo Alaraco" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Alaraco</h6>
+              <h6 class="descrip">1 Hamburguesa Alaraco + 1 Papa Regular + 1 Bebida Personal</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 3: Combo Broaster a la Pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Broaster_a_lo_pobre.png" alt="Combo Broaster a la Pobre" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Broaster a la Pobre</h6>
+              <h6 class="descrip">1 Hamburguesa Broaster A la Pobre + 1 Papa Regular + 1 Bebida Personal</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 4: Combo Extra Cheese -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Extra_Cheese.png" alt="Combo Extra Cheese" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Extra Cheese</h6>
+              <h6 class="descrip">1 Hamburguesa Extra Cheese + 1 Papa Regular + 1 Bebida Personal</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 5: Combo Hawaiano -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Hawaiano.png" alt="Combo Hawaiano" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Hawaiano</h6>
+              <h6 class="descrip">1 Hamburguesa Hawaiana + 1 Papa Regular + 1 Bebida Personal </h6>
+            </div>
+          </div>
+          <!-- Tarjeta 6: Combo Parrillero -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Parrillero.png" alt="Combo Parrillero" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Parrillero</h6>
+              <h6 class="descrip">1 Hamburguesa Parrillera + 1 Papa Regular + 1 Bebida Personal</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 7: Combo Tocino -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Combos/Combo_Tocino.png" alt="Combo Tocino" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Combo Tocino</h6>
+              <h6 class="descrip">1 Hamburguesa con Tocino + 1 Papa Regular + 1 Bebida Personal </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="slide-container">
+      <div class="slide-content">
+        <div class="slide-wrapper">
+
+          <!-- Tarjeta 1: Duo Alaraco -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Duo_alaraco.png" alt="Duo Alaraco" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Duo Alaraco</h6>
+              <h6 class="descrip">2 Hamburguesas Alaraco + 2 Papas Regulares + 2 Salsas de la Casa</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 2: Duo Broaster -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Duo_Broaster.png" alt="Duo Broaster" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Duo Broaster</h6>
+              <h6 class="descrip">2 Hamburguesas Broaster + 2 Papas Regulares + 2 Salsas de la Casa</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 3: Trio Doble carne y queso -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Trio_dobleburger_cheese.png" alt="Trio Doble carne y queso" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Trio Doble carne y queso</h6>
+              <h6 class="descrip">3 Hamburguesas Doble Carne y Queso + 2 Papas Regulares + 3 Salsas de la Casa</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 4: Trio Hamburguesa a la pobre -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Trio_Hamburguesa_a_la_pobre.png" alt="Trio Hamburguesa a la pobre"
+                  class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Trio Hamburguesa a la pobre</h6>
+              <h6 class="descrip">3 Hamburguesas A la Pobre + 2 Papas Regulares + 3 Salsas de la Casa</h6>
+            </div>
+          </div>
+          <!-- Tarjeta 5: Trio Hawaiano -->
+          <div class="card">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="img/Promociones/Trio_Hawaiano.png" alt="Trio Hawaiano" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h6 class="name">Trio Hawaiano</h6>
+              <h6 class="descrip">3 Hamburguesas Hawaianas + 2 Papas Regulares + 3 Salsas de la Casa</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+</body>
