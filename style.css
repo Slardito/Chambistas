@@ -27,7 +27,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-container {
@@ -104,31 +104,74 @@ body {
   color: #ffffff;
 }
 
+/* -- Carrito -- */
 .cart-btn {
   background-color: #262626;
   color: #ffffff;
   text-decoration: none;
-  padding: 8px 18px;
-  border-radius: 20px;
+  padding: 8px 14px;
+  border-radius: 3px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   display: flex;
   align-items: center;
+  gap: 8px;
+  min-height: 38px;
   transition: background-color 0.2s ease;
 }
 
 .cart-btn:hover {
-  background-color: #ff3333;
+  background-color: #3a3a3a;
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  width: 25px;
+  height: 25px;
+}
+
+.cart-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -3px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 3px;
+  border-radius: 50%;
+  background: #fff;
+  color: #dc2200;
+  font: bold 12px/17px Arial, sans-serif;
+  text-align: center;
+}
+
+.cart-amount {
+  white-space: nowrap;
+  font: bold 13px Arial, sans-serif;
+}
+
+.cart-btn:focus-visible {
+  outline: 3px solid #ffcc00;
+  outline-offset: 3px;
 }
 
 /* -- 3. Secciones (MENÚ, COMBOS, PROMOS) -- */
-.MENU, .COMBOS, .PROMOS {
+.MENU,
+.COMBOS,
+.PROMOS {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 15px 10px 15px;
 }
 
-.MENU h2, .COMBOS h2, .PROMOS h2 {
+.MENU h2,
+.COMBOS h2,
+.PROMOS h2 {
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
@@ -137,7 +180,9 @@ body {
   text-transform: uppercase;
 }
 
-.MENU h5, .COMBOS h5, .PROMOS h5 {
+.MENU h5,
+.COMBOS h5,
+.PROMOS h5 {
   width: 100%;
   text-align: center;
   margin-bottom: 20px;
@@ -145,13 +190,16 @@ body {
   font-size: 1.2rem;
   text-transform: uppercase;
 }
+
 /* Slider horizontal para tarjetas de productos */
 .slide-container {
   width: 100%;
 }
+
 .slide-content {
   width: 100%;
 }
+
 .slide-wrapper {
   display: flex;
   flex-direction: row;
@@ -160,6 +208,7 @@ body {
   padding: 15px 5px;
   scroll-behavior: smooth;
 }
+
 /* Personalización del scrollbar del slider */
 .slide-wrapper::-webkit-scrollbar {
   height: 10px;
@@ -177,7 +226,8 @@ body {
 
 /* Tarjetas de producto */
 .card {
-  flex: 0 0 240px; /* Ancho fijo uniforme para la tarjeta */
+  flex: 0 0 240px;
+  /* Ancho fijo uniforme para la tarjeta */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -199,27 +249,32 @@ body {
   width: 100%;
   margin-bottom: 12px;
 }
+
 .card-image {
   position: relative;
   width: 100%;
-  height: 180px; 
-  border-radius: 8px; /* Bordes curvos */
+  height: 180px;
+  border-radius: 8px;
+  /* Bordes curvos */
   overflow: hidden;
   background-color: #f8f8f8;
 }
+
 /* La imagen se ajusta al 100% */
 .card-image .card-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   display: block;
 }
+
 /* Información debajo de la comida */
 .card-content {
   text-align: left;
   width: 100%;
   padding: 5px 0;
 }
+
 .card-content .name {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 0.9rem;
@@ -246,6 +301,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border-top: 1px solid #f0f0f0;
   font-family: Arial, sans-serif;
 }
+
 .footer-container {
   display: flex;
   flex-direction: row;
@@ -255,15 +311,18 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin: 0 auto;
   gap: 40px;
 }
+
 .footer-column {
   flex: 1;
   min-width: 220px;
 }
+
 .footer-logo-img {
   max-width: 160px;
   height: auto;
   display: block;
 }
+
 .footer-column h3 {
   font-size: 0.95rem;
   color: white;
@@ -272,14 +331,17 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 20px;
   font-weight: 700;
 }
+
 .footer-column ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .footer-column ul li {
   margin-bottom: 12px;
 }
+
 .footer-column ul li a {
   color: white;
   text-decoration: none;
@@ -288,13 +350,15 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-family: Arial, sans-serif;
   transition: all 0.2s ease;
 }
+
 .footer-column ul li a:hover {
   color: #ff3333;
   padding-left: 3px;
 }
+
 /* Libro de reclamaciones */
 .libro-img {
-  width: 120px; 
+  width: 120px;
   height: auto;
   display: block;
   background: #ffffff;
@@ -303,12 +367,14 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border-radius: 6px;
   margin-bottom: 15px;
 }
+
 .feedback-container {
   margin-top: 20px;
   border-top: 1px dashed #e0e0e0;
   padding-top: 15px;
   max-width: 260px;
 }
+
 .feedback-container h3 {
   font-size: 0.9rem;
   color: white;
@@ -316,6 +382,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 8px;
   font-weight: 600;
 }
+
 .feedback-text {
   font-family: Arial, sans-serif;
   font-size: 0.8rem;
@@ -323,6 +390,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   line-height: 1.4;
   margin-bottom: 12px;
 }
+
 .btn-sugerencias {
   display: inline-block;
   background-color: #D9320D;
@@ -337,12 +405,14 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   box-shadow: 0 4px 10px rgba(255, 204, 0, 0.2);
   transition: all 0.2s ease;
 }
+
 .btn-sugerencias:hover {
   background-color: #ff3333;
   color: #ffffff;
   box-shadow: 0 4px 10px rgba(255, 51, 51, 0.3);
   transform: translateY(-1px);
 }
+
 .footer-bottom {
   max-width: 1200px;
   margin: 40px auto 0 auto;
@@ -353,16 +423,18 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-family: Arial, sans-serif;
   color: #888888;
 }
+
 .feedback-container {
   margin-top: 15px;
-  border-top: none; 
+  border-top: none;
   padding-top: 0;
 }
+
 /* Estilo del botón verde para hacer referencia a Whatsapp */
 .btn-pedido {
   display: inline-block;
-  background-color: #2ab45d; 
-  color: #ffffff !important;  
+  background-color: #2ab45d;
+  color: #ffffff !important;
   padding: 8px 16px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -376,25 +448,30 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 /* Efecto al pasar el cursor */
 .btn-pedido:hover {
-  background-color: #1a572f; 
+  background-color: #1a572f;
   color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
   transform: translateY(-1px);
-  padding-left: 16px !important; 
+  padding-left: 16px !important;
 }
 
 
 /* --- Terminos y condicicones --- */
 .modal-contenido h2 {
-  text-align: center;      
-  margin-top: 10px;        /* Margen superior */
-  margin-bottom: 20px;     /* Margen inferior */
-  padding-right: 25px;     /* Espacio a la derecha */
-  padding-left: 25px;      /* Espacio a la izquierda */
+  text-align: center;
+  margin-top: 10px;
+  /* Margen superior */
+  margin-bottom: 20px;
+  /* Margen inferior */
+  padding-right: 25px;
+  /* Espacio a la derecha */
+  padding-left: 25px;
+  /* Espacio a la izquierda */
 }
+
 /* Fondo oscuro translúcido */
 .modal-overlay {
-  display: none; 
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -405,6 +482,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   justify-content: center;
   align-items: center;
 }
+
 /* Caja de contenido de la ventana flotante */
 .modal-contenido {
   background-color: #1f1f1f;
@@ -418,6 +496,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   font-family: Arial, sans-serif;
 }
+
 .modal-body {
   max-height: 60vh;
   overflow-y: auto;
@@ -426,12 +505,14 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   line-height: 1.5;
   font-size: 0.9rem;
 }
+
 .modal-body h3 {
   font-size: 1rem;
   color: #ff3333;
   margin-top: 15px;
   margin-bottom: 5px;
 }
+
 /* Botón para cerrar las ventanas flotantes */
 .btn-cerrar {
   position: absolute;
@@ -446,6 +527,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 .btn-cerrar:hover {
   color: #ff3333;
 }
+
 /* Politicas de Privacidad */
 /* Centrado y márgenes para los títulos */
 .modal-contenido h2 {
