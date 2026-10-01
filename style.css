@@ -283,9 +283,9 @@ body {
 }
 
 /* Estilo para el precio que se coloque debajo, pero por el momento esto no se va habilitar */
-.card-content .descripcion {
-  font-size: 1.1rem;
-  color: #ff3333;
+.card-content .precio {
+  font-size: 0.8rem;
+  color: black;
   font-weight: 900;
 }
 
