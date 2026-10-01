@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #f4f4f4;
+  background-color: #F5EBDC;
   overflow-x: hidden;
 }
 
@@ -216,11 +216,12 @@ body {
 }
 /* Información debajo de la comida */
 .card-content {
-  text-align: center;
+  text-align: left;
   width: 100%;
   padding: 5px 0;
 }
 .card-content .name {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 0.9rem;
   color: #111111;
   font-weight: bold;
@@ -228,11 +229,15 @@ body {
 }
 
 /* Estilo para el precio que se coloque debajo, pero por el momento esto no se va habilitar */
-.card-content .precio {
-  font-size: 0.8rem;
-  color: black;
-  font-weight: 900;
+.card-content .descrip {
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 0.7rem;
+  width: 100%;
+  color: #8C5920;
+  font-weight: 800;
+  padding: 5px 0;
 }
+
 
 /* -- Footer -- */
 .site-footer {
