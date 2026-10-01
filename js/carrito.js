@@ -2,9 +2,9 @@
    Cambia estos productos y precios por los de tu carta.
    Futuro: cargar los productos desde una API o JSON. */
 const productos = [
-  { id: 1, nombre: 'Hamburguesa con Queso', precio: 12 },
-  { id: 2, nombre: 'Hamburguesa Doble Carne & Cheese', precio: 18 },
-  { id: 3, nombre: 'Papas fritas', precio: 6 }
+  { id: 1, nombre: 'Hamburguesa con Queso', precio: 0 },
+  { id: 2, nombre: 'Hamburguesa Doble Carne & Cheese', precio: 0 },
+  { id: 3, nombre: 'Papas fritas', precio: 0 }
 ];
 
 /* ESTADO DEL CARRITO
@@ -75,6 +75,7 @@ for (const producto of productos) {
   const nombre = document.createElement('h3');
   nombre.textContent = producto.nombre;
   const precio = document.createElement('p');
+  precio.className = 'precio-producto';
   precio.textContent = soles(producto.precio);
   tarjeta.append(nombre, precio, crearBoton('Agregar al carrito', () => cambiarCantidad(producto.id, 1), `Agregar ${producto.nombre} al carrito`));
   document.getElementById('productos').append(tarjeta);
