@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reserva | Gula Pura</title>
   <link rel="icon" href="img/logo-icon/icon_gula_pura.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
@@ -34,8 +35,7 @@
         </div>
         <div class="user-info">
           <div class="user-text">
-            <a href="Carta.html" target="_blank"
-              rel="noopener noreferrer" class="link-pedido">
+            <a href="Carta.html" class="link-pedido">
               <strong>Realiza tu pedido</strong>
             </a>
           </div>
@@ -45,153 +45,160 @@
   </header>
   <main>
     <section class="pagina-hero">
-  <div class="pagina-hero-contenido">
-    <span class="pagina-etiqueta">GULA PURA</span>
-    <h1>RESERVA TU MESA</h1>
-    <p>Organiza tu visita y disfruta de tu momento Gula Pura.</p>
-  </div>
-</section>
-
-<section class="pagina-seccion">
-  <div class="pagina-contenedor reserva-layout">
-    <div class="reserva-info">
-      <span class="pagina-mini-titulo">HAZ TU RESERVA</span>
-      <h2>Te esperamos</h2>
-      <p>Completa tus datos y cuéntanos cuándo quieres visitarnos. Nuestro equipo podrá confirmar la disponibilidad contigo.</p>
-      <div class="reserva-dato"><strong>Teléfono</strong><span>957 059 897</span></div>
-      <div class="reserva-dato"><strong>Atención</strong><span>Consulta disponibilidad antes de asistir.</span></div>
-      <a class="btn-gula-secundario" href="https://wa.me/51957059897?text=Hola,%20quisiera%20consultar%20una%20reserva" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
-    </div>
-
-    <form class="formulario-gula" action="#" method="post" onsubmit="event.preventDefault(); alert('Tu solicitud de reserva ha sido registrada. Nos comunicaremos contigo para confirmar la disponibilidad.');">
-      <div class="form-row-gula">
-        <div class="campo-gula">
-          <label for="reserva-nombre">Nombre completo</label>
-          <input id="reserva-nombre" name="nombre" type="text" placeholder="Escribe tu nombre" required>
-        </div>
-        <div class="campo-gula">
-          <label for="reserva-telefono">Teléfono</label>
-          <input id="reserva-telefono" name="telefono" type="tel" placeholder="999 999 999" required>
-        </div>
+      <div class="pagina-hero-contenido">
+        <span class="pagina-etiqueta">GULA PURA</span>
+        <h1>RESERVA TU MESA</h1>
+        <p>Organiza tu visita y disfruta de tu momento Gula Pura.</p>
       </div>
+    </section>
 
-      <div class="form-row-gula">
-        <div class="campo-gula">
-          <label for="reserva-fecha">Fecha</label>
-          <input id="reserva-fecha" name="fecha" type="date" required>
+    <section class="pagina-seccion">
+      <div class="pagina-contenedor reserva-layout">
+        <div class="reserva-info">
+          <span class="pagina-mini-titulo">HAZ TU RESERVA</span>
+          <h2>Te esperamos</h2>
+          <p>Completa tus datos y cuéntanos cuándo quieres visitarnos. Nuestro equipo podrá confirmar la disponibilidad
+            contigo.</p>
+          <div class="reserva-dato"><strong>Teléfono</strong><span>957 059 897</span></div>
+          <div class="reserva-dato"><strong>Atención</strong><span>Consulta disponibilidad antes de asistir.</span>
+          </div>
+          <a class="btn-gula-secundario"
+            href="https://wa.me/51957059897?text=Hola,%20quisiera%20consultar%20una%20reserva" target="_blank"
+            rel="noopener noreferrer">Consultar por WhatsApp</a>
         </div>
-        <div class="campo-gula">
-          <label for="reserva-hora">Hora</label>
-          <input id="reserva-hora" name="hora" type="time" required>
-        </div>
-      </div>
 
-      <div class="campo-gula">
-        <label for="reserva-personas">Número de personas</label>
-        <select id="reserva-personas" name="personas" required>
-          <option value="" selected disabled>Selecciona una cantidad</option>
-          <option>1 persona</option>
-          <option>2 personas</option>
-          <option>3 personas</option>
-          <option>4 personas</option>
-          <option>5 personas</option>
-          <option>6 o más personas</option>
-        </select>
-      </div>
+        <form class="formulario-gula" action="#" method="post"
+          onsubmit="event.preventDefault(); alert('Tu solicitud de reserva ha sido registrada. Nos comunicaremos contigo para confirmar la disponibilidad.');">
+          <div class="form-row-gula">
+            <div class="campo-gula">
+              <label for="reserva-nombre">Nombre completo</label>
+              <input id="reserva-nombre" name="nombre" type="text" placeholder="Escribe tu nombre" required>
+            </div>
+            <div class="campo-gula">
+              <label for="reserva-telefono">Teléfono</label>
+              <input id="reserva-telefono" name="telefono" type="tel" placeholder="999 999 999" required>
+            </div>
+          </div>
 
-      <div class="campo-gula">
-        <label for="reserva-mensaje">Mensaje u observaciones</label>
-        <textarea id="reserva-mensaje" name="mensaje" rows="4" placeholder="¿Alguna indicación especial?"></textarea>
-      </div>
+          <div class="form-row-gula">
+            <div class="campo-gula">
+              <label for="reserva-fecha">Fecha</label>
+              <input id="reserva-fecha" name="fecha" type="date" required>
+            </div>
+            <div class="campo-gula">
+              <label for="reserva-hora">Hora</label>
+              <input id="reserva-hora" name="hora" type="time" required>
+            </div>
+          </div>
 
-      <button class="btn-gula-principal" type="submit">SOLICITAR RESERVA</button>
-      <p class="formulario-nota">La reserva queda sujeta a confirmación de disponibilidad.</p>
-    </form>
-  </div>
-</section>
+          <div class="campo-gula">
+            <label for="reserva-personas">Número de personas</label>
+            <select id="reserva-personas" name="personas" required>
+              <option value="" selected disabled>Selecciona una cantidad</option>
+              <option>1 persona</option>
+              <option>2 personas</option>
+              <option>3 personas</option>
+              <option>4 personas</option>
+              <option>5 personas</option>
+              <option>6 o más personas</option>
+            </select>
+          </div>
+
+          <div class="campo-gula">
+            <label for="reserva-mensaje">Mensaje u observaciones</label>
+            <textarea id="reserva-mensaje" name="mensaje" rows="4"
+              placeholder="¿Alguna indicación especial?"></textarea>
+          </div>
+
+          <button class="btn-gula-principal" type="submit">SOLICITAR RESERVA</button>
+          <p class="formulario-nota">La reserva queda sujeta a confirmación de disponibilidad.</p>
+        </form>
+      </div>
+    </section>
   </main>
-<footer class="site-footer">
-  <div class="footer-container">
-    <!-- Columna 1: Logo y Redes -->
-    <div class="footer-column brand-column">
-      <a href="index.html" class="logo">
-        <span class="gulapura-text">GULA PURA</span>
-      </a>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- Columna 1: Logo y Redes -->
+      <div class="footer-column brand-column">
+        <a href="index.html" class="logo">
+          <span class="gulapura-text">GULA PURA</span>
+        </a>
 
-      <div class="social-icons">
-        <a href="https://facebook.com/tu-pagina" target="_blank" aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="https://instagram.com/tu-usuario" target="_blank" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://tiktok.com/@tu-usuario" target="_blank" aria-label="TikTok">
-          <i class="fa-brands fa-tiktok"></i>
-        </a>
-      </div>
-
-    </div>
-    <!-- Columna 2: Nuestros Productos -->
-    <div class="footer-column">
-      <h3>Nuestros Productos</h3>
-      <ul>
-        <li><a href="#MENU">Nuestra Carta </a></li>
-        <li><a href="#COMBOS">Combos Salvajes</a></li>
-        <li><a href="#PROMOS">Super Promociones</a></li>
-      </ul>
-    </div>
-    <!-- Columna 3: Ayuda -->
-    <div class="footer-column">
-      <h3>Ayuda</h3>
-      <ul>
-        <!-- Funciones específicas para abrir cada modal -->
-        <li><a href="Nosotros.html">Nosotros</a></li>
-        <li><a href="Reserva.html">Reserva</a></li>
-        <li><a href="Contactos.html">Contactos</a></li>
-        <li><a href="Condiciones.html">Términos y condiciones</a></li>
-        <li><a href="Privacidad.html">Políticas de privacidad</a></li>
-        <li><a href="horario.html">Horarios de atención</a></li>
-        <li class="item-contacto">
-          <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank"
-            rel="noopener noreferrer">
-            Contacto: 957 059 897
+        <div class="social-icons">
+          <a href="https://facebook.com/tu-pagina" target="_blank" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
           </a>
-        </li>
-
-        <li class="feedback-container">
-          <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" class="btn-pedido"
-            target="_blank" rel="noopener noreferrer">
-            Realiza tu pedido
+          <a href="https://instagram.com/tu-usuario" target="_blank" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
           </a>
-        </li>
-      </ul>
-      <div>
+          <a href="https://tiktok.com/@tu-usuario" target="_blank" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+
       </div>
-    </div>
-    <!-- Columna 4: Contacto & Atención al Cliente (Libro y Sugerencias) -->
-    <div class="footer-column legal-column">
-      <h3>RECLAMOS & SUGERENCIAS</h3>
+      <!-- Columna 2: Nuestros Productos -->
+      <div class="footer-column">
+        <h3>Nuestros Productos</h3>
+        <ul>
+          <li><a href="#MENU">Nuestra Carta </a></li>
+          <li><a href="#COMBOS">Combos Salvajes</a></li>
+          <li><a href="#PROMOS">Super Promociones</a></li>
+        </ul>
+      </div>
+      <!-- Columna 3: Ayuda -->
+      <div class="footer-column">
+        <h3>Ayuda</h3>
+        <ul>
+          <!-- Funciones específicas para abrir cada modal -->
+          <li><a href="Nosotros.html">Nosotros</a></li>
+          <li><a href="Reserva.html">Reserva</a></li>
+          <li><a href="Contactos.html">Contactos</a></li>
+          <li><a href="Condiciones.html">Términos y condiciones</a></li>
+          <li><a href="Privacidad.html">Políticas de privacidad</a></li>
+          <li><a href="horario.html">Horarios de atención</a></li>
+          <li class="item-contacto">
+            <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank"
+              rel="noopener noreferrer">
+              Contacto: 957 059 897
+            </a>
+          </li>
 
-      <!-- 1. Libro de Reclamaciones vinculada a libro-de-reclamaciones.html -->
-      <a href="libro-de-reclamaciones.html">
-        <img src="img/footer/Libro_reclamos.png" alt="Libro de Reclamaciones" class="libro-img">
-      </a>
+          <li class="feedback-container">
+            <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" class="btn-pedido"
+              target="_blank" rel="noopener noreferrer">
+              Realiza tu pedido
+            </a>
+          </li>
+        </ul>
+        <div>
+        </div>
+      </div>
+      <!-- Columna 4: Contacto & Atención al Cliente (Libro y Sugerencias) -->
+      <div class="footer-column legal-column">
+        <h3>RECLAMOS & SUGERENCIAS</h3>
 
-      <!-- 2. Sugerencias conectado a un Formulario de google -->
-      <div class="feedback-container">
-        <h3>Tu Opinión Cuenta</h3>
-        <p class="feedback-text">¿Tienes alguna idea o sugerencia para nosotros? Queremos escucharte.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGWHN5Qboh4pLPVPXL78QI0LmWeiwGPB_7sudZl1JCkc1D7g/viewform?usp=header"
-          class="btn-sugerencias" target="_blank" rel="noopener noreferrer">
-          Dejar sugerencia
+        <!-- 1. Libro de Reclamaciones vinculada a libro-de-reclamaciones.html -->
+        <a href="libro-de-reclamaciones.html">
+          <img src="img/footer/Libro_reclamos.png" alt="Libro de Reclamaciones" class="libro-img">
         </a>
+
+        <!-- 2. Sugerencias conectado a un Formulario de google -->
+        <div class="feedback-container">
+          <h3>Tu Opinión Cuenta</h3>
+          <p class="feedback-text">¿Tienes alguna idea o sugerencia para nosotros? Queremos escucharte.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScGWHN5Qboh4pLPVPXL78QI0LmWeiwGPB_7sudZl1JCkc1D7g/viewform?usp=header"
+            class="btn-sugerencias" target="_blank" rel="noopener noreferrer">
+            Dejar sugerencia
+          </a>
+        </div>
       </div>
-    </div>
-    <!-- En el pie del footer se colocaron los Derechos Reservados -->
-    <div class="footer-bottom" id="footer-bottom">
-      <span>&copy; 2026 Gula Pura. Todos los derechos reservados.</span>
-    </div>
-</footer>
+      <!-- En el pie del footer se colocaron los Derechos Reservados -->
+      <div class="footer-bottom" id="footer-bottom">
+        <span>&copy; 2026 Gula Pura. Todos los derechos reservados.</span>
+      </div>
+  </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

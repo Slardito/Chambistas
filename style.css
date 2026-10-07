@@ -1615,3 +1615,29 @@ body {
 .pd-qty{display:flex;align-items:center;gap:12px;margin-bottom:18px}
 .pd-qty button{width:36px;height:36px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:20px;cursor:pointer}
 .pd-order{display:inline-block;background:#25d366;color:#fff;font-weight:800;padding:14px 22px;border-radius:8px;text-decoration:none}
+
+/*Terminos y Condiciones % Privacidad*/
+/* ===================================================
+   PALETA DE COLORES - GULA PURA
+   =================================================== */
+:root {
+  /* Colores Principales / Marca */
+  --color-primary: #e63946;        /* Rojo Intenso: Botones principales, enlaces, destacados */
+  --color-primary-hover: #c1121f;  /* Rojo Oscuro: Efecto hover en botones principales */
+  
+  --color-secondary: #ffb703;      /* Amarillo Dorado / Mostaza: Ofertas, badges, acentos */
+  --color-secondary-hover: #fb8500;/* Naranja Cálido: Hover secundario o llamadas de atención */
+
+  /* Neutros Oscuros (Textos y Encabezados) */
+  --color-dark: #1a1a1a;           /* Negro Casi Puro: Encabezados, textos principales, navbar */
+  --color-dark-muted: #333333;     /* Gris Oscuro: Textos secundarios, párrafos */
+  
+  /* Neutros Claros (Fondos y Tarjetas) */
+  --color-bg-light: #f8f9fa;       /* Blanco Humo: Fondo general de la página */
+  --color-card-bg: #ffffff;        /* Blanco puro: Fondo de tarjetas y contenedores */
+  --color-border: #e9ecef;         /* Gris Claro: Bordes, divisores y líneas de separación */
+
+  /* Colores de Estado y Redes */
+  --color-whatsapp: #25d366;       /* Verde WhatsApp: Botón de pedidos/contacto */
+  --color-whatsapp-hover: #1da851; /* Verde WhatsApp Hover */
+}
