@@ -1641,3 +1641,27 @@ body {
   --color-whatsapp: #25d366;       /* Verde WhatsApp: Botón de pedidos/contacto */
   --color-whatsapp-hover: #1da851; /* Verde WhatsApp Hover */
 }
+/* ===== BARRA INFERIOR DEL PEDIDO (Carta.html) ===== */
+.bar {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(560px, calc(100% - 32px));
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: var(--primary);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font: 800 15px Arial, sans-serif;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+}
+
+.bar:hover {
+  background: var(--primary-dark);
+}

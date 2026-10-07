@@ -213,3 +213,68 @@ if (document.getElementById('pd-nombre')) {
 
   actualizar();
 }
+/* ===== VENTANA FLOTANTE DE PEDIDO (botón + de Carta.html) ===== */
+(function () {
+  const overlay = document.getElementById('pedidoOverlay');
+  if (!overlay) return; // en otras páginas no hace nada
+
+  const g = (id) => document.getElementById(id);
+  const fmt = (n) => 'S/ ' + n.toFixed(2);
+  let producto = null;
+  let cant = 1;
+
+  function pintar() {
+    g('pedidoCant').textContent = cant;
+    g('pedidoPrecio').textContent = fmt(producto.price);
+    g('pedidoTotal').textContent = fmt(producto.price * cant);
+  }
+
+  function abrir(p) {
+    producto = p;
+    cant = 1;
+    g('pedidoNombre').textContent = p.name;
+    g('pedidoDesc').textContent = p.desc;
+    g('pedidoImg').src = p.img;
+    g('pedidoImg').alt = p.name;
+    pintar();
+    overlay.hidden = false;
+    document.body.classList.add('pedido-abierto');
+  }
+
+  function cerrar() {
+    overlay.hidden = true;
+    document.body.classList.remove('pedido-abierto');
+  }
+
+  // Intercepta el clic en el + (fase de captura) antes de que corra onclick="add(id)"
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.gp-add');
+    if (!btn) return;
+    const m = (btn.getAttribute('onclick') || '').match(/add\((\d+)\)/);
+    if (!m || !P[m[1]]) return;
+    e.stopPropagation();
+    e.preventDefault();
+    abrir(P[m[1]]);
+  }, true);
+
+  g('pedidoMas').addEventListener('click', () => { cant++; pintar(); });
+  g('pedidoMenos').addEventListener('click', () => { cant = Math.max(1, cant - 1); pintar(); });
+  g('pedidoCerrar').addEventListener('click', cerrar);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) cerrar(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.hidden) cerrar(); });
+
+  g('pedidoEnviar').addEventListener('click', () => {
+    const cliente = g('pedidoCliente').value.trim();
+    const dir = g('pedidoDireccion').value.trim();
+    const nota = g('pedidoNota').value.trim();
+    const total = producto.price * cant;
+
+    const msg = `Hola, quisiera realizar un pedido:\n• ${cant} x ${producto.name} - ${fmt(total)}\n\nTotal: ${fmt(total)}`
+      + (cliente ? `\nNombre: ${cliente}` : '')
+      + (dir ? `\nDirección: ${dir}` : '')
+      + (nota ? `\nComentarios: ${nota}` : '');
+
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+    cerrar();
+  });
+})();
