@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario de atención | Gula Pura</title>
+  <meta name="description" content="Horario de atención de Gula Pura y si la cocina está abierta ahora.">
+  <link rel="icon" href="img/logo-icon/icon_gula_pura.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="info.css">
+  <script src="app.js" defer></script>
+  <!-- negocio.js = datos del negocio; info.js = lógica de estas páginas (en ese orden) -->
+</head>
+
+<body>
+<!-- Iconos compartidos (redes, ubicación, reloj, etc.). Se usan con <svg><use href="#i-nombre"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-instagram" viewBox="0 0 24 24"><path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0"/><path d="M16.5 7.5v.01"/></symbol>
+<symbol id="i-facebook" viewBox="0 0 24 24"><path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2z"/></symbol>
+<symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M21 7.917v4.034a9.948 9.948 0 0 1-5-1.951v4.5a6.5 6.5 0 1 1-8-6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z"/></symbol>
+<symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M1 4h15v12H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="18.5" cy="18.5" r="2"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+<symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h7"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/></symbol>
+</defs></svg>
+
+<header class="navbar">
+    <div class="navbar-container">
+      <!-- Logo GULA PURA -->
+      <a href="index.html" class="logo">
+        <span class="gulapura-text">GULA PURA</span>
+      </a>
+      <!-- Menú de navegación principal -->
+      <nav class="nav-links">
+        <a href="index.html#MENU" class="nav-item">MENÚ</a>
+        <a href="index.html#COMBOS" class="nav-item">COMBOS</a>
+        <a href="index.html#PROMOS" class="nav-item">PROMOS EXCLUSIVAS</a>
+      </nav>
+      <!-- Sección de contacto y compra -->
+      <div class="navbar-actions">
+        <div class="phone-info">
+          <div class="phone-text">
+            <span class="label">Llámanos</span>
+            <span class="number">957 059 897</span>
+          </div>
+        </div>
+        <div class="user-info">
+          <div class="user-text">
+            <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" target="_blank"
+              rel="noopener noreferrer" class="link-pedido">
+              <strong>Realiza tu pedido</strong>
+            </a>
+          </div>
+        </div>
+        <!-- Botón de carrito de compras -->
+        <a href="Carrito.html" class="cart-btn" aria-label="Ver carrito, 0 productos, total S/ 0.00">
+          <span class="cart-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 5h4l4 17h15M9 10h20l-3 9H11" />
+              <circle cx="13" cy="27" r="1" fill="currentColor" />
+              <circle cx="25" cy="27" r="1" fill="currentColor" />
+            </svg>
+            <span class="cart-count" aria-hidden="true">0</span>
+          </span>
+          <span class="cart-amount" aria-hidden="true">S/ 0.00</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="gi">
+    <section class="gi-hero">
+      <span class="gi-fondo" aria-hidden="true">Horario</span>
+      <div class="gi-hero-in">
+        <nav class="gi-migas" aria-label="Ruta de navegación"><a href="index.html">Inicio</a><span aria-hidden="true">›</span><span aria-current="page">Horario de atención</span></nav>
+        <div>
+          <h1>¿Ya abrió la cocina?</h1>
+          <p class="gi-lead">Estos son los horarios en los que atendemos tus pedidos por WhatsApp. Aquí ves al instante si estamos abiertos.</p>
+          <div class="gi-estado" data-estado aria-live="polite"><span class="gi-dot" aria-hidden="true"></span><div><strong data-estado-texto>Revisando…</strong><span class="gi-detalle" data-estado-detalle>&nbsp;</span></div></div>
+        </div>
+        <div class="gi-reloj" aria-live="off"><small>Ahora en Trujillo</small><span class="gi-hora" id="gi-reloj">--:--</span></div>
+      </div>
+    </section>
+
+    <section class="gi-sec">
+      <div class="gi-dos">
+        <div class="gi-comanda">
+          <h2>Horario semanal</h2>
+          <p class="gi-sub" style="margin-bottom:0">Hora de Perú. El día de hoy aparece resaltado.</p>
+          <ul class="gi-semana" id="gi-semana"></ul>
+        </div>
+
+        <div class="gi-lateral">
+          <article class="gi-card">
+            <div class="gi-icono"><svg class="gi-i" aria-hidden="true"><use href="#i-chat"/></svg></div>
+            <h3>Pide mientras estemos abiertos</h3>
+            <p>Escríbenos por WhatsApp con la cocina en horario y te confirmamos tu pedido, tu dirección y el total.</p>
+          </article>
+          <article class="gi-card">
+            <div class="gi-icono"><svg class="gi-i" aria-hidden="true"><use href="#i-clock"/></svg></div>
+            <h3>Feriados y fechas especiales</h3>
+            <p>En feriados o fechas especiales el horario puede cambiar. Confirma por WhatsApp antes de pedir.</p>
+          </article>
+          <div class="gi-oscura">
+            <h3>¿Prefieres llamar?</h3>
+            <p>La atención está sujeta al horario de nuestras cocinas.</p>
+            <a class="gi-btn gi-btn-oscuro" style="background:#ffcc00;color:#181818" href="tel:+51957059897"><svg class="gi-i" aria-hidden="true"><use href="#i-whatsapp"/></svg> 957 059 897</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gi-cierre">
+      <div class="gi-cierre-in">
+        <div>
+          <h2>Tu antojo no espera</h2>
+          <p>Si la cocina está abierta, escríbenos y lo preparamos.</p>
+        </div>
+        <div class="gi-acciones">
+          <a class="gi-btn gi-btn-oscuro" href="index.html#MENU">Ver la carta</a>
+          <a class="gi-btn gi-btn-wa" data-red="whatsapp" href="#" target="_blank" rel="noopener noreferrer"><svg class="gi-i" aria-hidden="true"><use href="#i-whatsapp"/></svg> Hacer mi pedido</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Columna 1: Logo y Redes -->
+    <div class="footer-column brand-column">
+      <a href="index.html" class="footer-logo-link">
+        <img src="img/logo-icon/gula_pura_logotipo.png" alt="Logo Gula Pura" class="footer-logo-img">
+      </a>
+
+      <!-- Ubicación, estado del horario y redes: el detalle está en las páginas de información -->
+      <a href="zona-de-cobertura.html" class="footer-local">
+        <svg aria-hidden="true"><use href="#i-pin"/></svg>
+        <span>Delivery en <strong>Trujillo, Perú</strong></span>
+      </a>
+      <a href="horario-de-atencion.html" class="footer-estado" data-estado data-corto>
+        <span data-estado-texto>Ver horario de atención</span>
+      </a>
+      <div class="footer-redes" aria-label="Redes sociales">
+        <a href="redes-sociales.html" data-red="instagram" aria-label="Instagram de Gula Pura"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="redes-sociales.html" data-red="facebook" aria-label="Facebook de Gula Pura"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        <a href="redes-sociales.html" data-red="tiktok" aria-label="TikTok de Gula Pura"><svg aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+        <a href="redes-sociales.html" data-red="whatsapp" aria-label="WhatsApp de Gula Pura"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+      </div>
+
+      <!--  Esto por el momento se encuentra en proceso 
+  <p>Síguenos en</p>
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+-->
+    </div>
+    <!-- Columna 2: Nuestros Productos -->
+    <div class="footer-column">
+      <h3>Nuestros Productos</h3>
+      <ul>
+        <li><a href="index.html#MENU">Nuestra Carta </a></li>
+        <li><a href="index.html#COMBOS">Combos Salvajes</a></li>
+        <li><a href="index.html#PROMOS">Super Promociones</a></li>
+      </ul>
+    </div>
+    <!-- Columna: páginas de información -->
+    <div class="footer-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a href="horario-de-atencion.html">Horario de atención</a></li>
+        <li><a href="zona-de-cobertura.html">Zona de cobertura</a></li>
+        <li><a href="metodos-de-pago.html">Métodos de pago</a></li>
+        <li><a href="redes-sociales.html">Redes sociales</a></li>
+      </ul>
+    </div>
+    <!-- Columna 3: Ayuda -->
+    <div class="footer-column">
+      <h3>Ayuda</h3>
+      <ul>
+        <!-- Funciones específicas para abrir cada modal -->
+        <li><a href="#" onclick="abrirModalTerminos(event)">Términos y condiciones</a></li>
+        <li><a href="#" onclick="abrirModalPrivacidad(event)">Políticas de privacidad</a></li>
+        <li class="item-contacto">
+          <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank"
+            rel="noopener noreferrer">
+            Contacto: 957 059 897
+          </a>
+        </li>
+
+        <li class="feedback-container">
+          <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" class="btn-pedido"
+            target="_blank" rel="noopener noreferrer">
+            Realiza tu pedido
+          </a>
+        </li>
+      </ul>
+
+      <!-- Ventana flotante : Términos y Condiciones -->
+      <div id="modal-terminos" class="modal-overlay">
+        <div class="modal-contenido">
+          <!-- Aqui se puede ver reflejado un boton para poder cerrar la ventana flotante de Términos y Condiciones -->
+          <span class="btn-cerrar" onclick="cerrarModalTerminos()">&times;</span>
+          <h2>Términos y Condiciones - Gúla Pura</h2>
+          <div class="modal-body">
+            <p>Bienvenido a <strong>Gúla Pura</strong>. A continuación, te presentamos las condiciones que rigen el uso
+              de nuestro sitio web y el proceso de atención y pedidos a través de nuestro canal oficial de
+              <strong>WhatsApp</strong>.
+            </p>
+
+            <h3>1. Canal Oficial de Ventas y Pedidos</h3>
+            <p>Nuestro sitio web funciona como una carta digital interactiva e informativa. El proceso de compra,
+              cotización, selección de productos, confirmación de dirección y pago se gestiona exclusivamente a través
+              de nuestro canal oficial de WhatsApp.</p>
+
+            <h3>2. Cobertura, Envíos y Horarios</h3>
+            <p>La confirmación de si tu dirección se encuentra dentro de nuestra zona de cobertura de delivery se
+              realizará directamente en el chat de WhatsApp al momento de compartir tu ubicación. La atención está
+              sujeta al horario de nuestras cocinas.</p>
+
+            <h3>3. Medios de Pago</h3>
+            <p>Los pagos se coordinan por WhatsApp e incluyen Yape, Plin, transferencias bancarias o efectivo contra
+              entrega (indicando el monto con el que abonarás para llevar el cambio exacto).</p>
+
+            <h3>4. Comprobantes y Libro de Reclamaciones</h3>
+            <p>Puedes solicitar Boleta o Factura electrónica en el chat de WhatsApp. Asimismo, nuestro Libro de
+              Reclamaciones Virtual se encuentra disponible en la parte inferior de la web.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ventana Flotante : Políticas de Privacidad -->
+      <div id="modal-privacidad" class="modal-overlay">
+        <div class="modal-contenido">
+          <!-- Aqui se puede ver reflejado un boton para poder cerrar la ventana flotante de Politicas de Privacidad -->
+          <span class="btn-cerrar" onclick="cerrarModalPrivacidad()">&times;</span>
+          <h2>Políticas de Privacidad - Gúla Pura</h2>
+          <div class="modal-body">
+            <p>En <strong>Gúla Pura</strong> nos comprometemos a proteger la privacidad de tus datos personales conforme
+              a la <strong>Ley N° 29733 (Ley de Protección de Datos Personales del Perú)</strong>.</p>
+
+            <h3>1. Datos Personales Recopilados</h3>
+            <p>Al realizar tus pedidos a través de WhatsApp, podemos solicitarte datos como: nombre completo, número de
+              teléfono, dirección de entrega y datos de facturación.</p>
+
+            <h3>2. Finalidad del Tratamiento de Datos</h3>
+            <p>Tus datos son utilizados exclusivamente para:</p>
+            <ul>
+              <li>Procesar, preparar y coordinar la entrega (delivery) de tus pedidos.</li>
+              <li>Emitir y enviarte el comprobante de pago electrónico correspondiente (Boleta/Factura).</li>
+              <li>Atender consultas o sugerencias enviadas a través de nuestros canales de atención.</li>
+            </ul>
+
+            <h3>3. Confidencialidad y Seguridad</h3>
+            <p>Tus datos personales no serán comercializados ni cedidos a terceros sin tu consentimiento previo, salvo
+              con el personal encargado del reparto o por requerimiento de la autoridad competente.</p>
+
+            <h3>4. Derechos ARCO</h3>
+            <p>Como titular de tus datos personales, puedes ejercer tus derechos de acceso, rectificación, cancelación u
+              oposición escribiéndonos directamente a nuestro canal de WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Columna 4: Contacto & Atención al Cliente (Libro y Sugerencias) -->
+    <div class="footer-column legal-column">
+      <h3>RECLAMOS & SUGERENCIAS</h3>
+
+      <!-- 1. Libro de Reclamaciones vinculada a libro-de-reclamaciones.html -->
+      <a href="libro-de-reclamaciones.html">
+        <img src="img/footer/Libro_reclamos.png" alt="Libro de Reclamaciones" class="libro-img">
+      </a>
+
+      <!-- 2. Sugerencias conectado a un Formulario de google -->
+      <div class="feedback-container">
+        <h3>Tu Opinión Cuenta</h3>
+        <p class="feedback-text">¿Tienes alguna idea o sugerencia para nosotros? Queremos escucharte.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGWHN5Qboh4pLPVPXL78QI0LmWeiwGPB_7sudZl1JCkc1D7g/viewform?usp=header"
+          class="btn-sugerencias" target="_blank" rel="noopener noreferrer">
+          Dejar sugerencia
+        </a>
+      </div>
+    </div>
+    <!-- Insignias de medios de pago -->
+    <div class="footer-pagos">
+      <span>Medios de pago</span>
+      <a href="metodos-de-pago.html" aria-label="Yape"><img src="img/pagos/yape.svg" alt="Yape"></a>
+      <a href="metodos-de-pago.html" aria-label="Plin"><img src="img/pagos/plin.svg" alt="Plin"></a>
+      <a href="metodos-de-pago.html" aria-label="Visa"><img src="img/pagos/visa.svg" alt="Visa"></a>
+      <a href="metodos-de-pago.html" aria-label="Mastercard"><img src="img/pagos/mastercard.svg" alt="Mastercard"></a>
+      <a href="metodos-de-pago.html" aria-label="Transferencia bancaria"><img src="img/pagos/transferencia.svg" alt="Transferencia bancaria"></a>
+      <a href="metodos-de-pago.html" aria-label="Efectivo"><img src="img/pagos/efectivo.svg" alt="Efectivo"></a>
+    </div>
+    <!-- En el pie del footer se colocaron los Derechos Reservados -->
+    <div class="footer-bottom" id="footer-bottom">
+      <span>&copy; 2026 Gula Pura. Todos los derechos reservados.</span>
+    </div>
+</footer>
+</body>
+
+</html>

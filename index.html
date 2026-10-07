@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="style.css">
   <!-- Se establecio comunicacón con app.js (Java Script) -->
   <script src="app.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -788,18 +789,22 @@
   <div class="footer-container">
     <!-- Columna 1: Logo y Redes -->
     <div class="footer-column brand-column">
-      <a href="/" class="footer-logo-link">
-        <img src="img/logo-icon/gula_pura_logotipo.png" alt="Logo Gula Pura" class="footer-logo-img">
+      <a href="#" class="logo">
+        <span class="gulapura-text">GULA PURA</span>
       </a>
 
-      <!--  Esto por el momento se encuentra en proceso 
-  <p>Síguenos en</p>
-  <div class="social-icons">
-    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-  </div>
--->
+      <div class="social-icons">
+        <a href="https://facebook.com/tu-pagina" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/tu-usuario" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@tu-usuario" target="_blank" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </div>
+
     </div>
     <!-- Columna 2: Nuestros Productos -->
     <div class="footer-column">
@@ -815,6 +820,9 @@
       <h3>Ayuda</h3>
       <ul>
         <!-- Funciones específicas para abrir cada modal -->
+        <li><a href="Nosotros.html">Nosotros</a></li>
+        <li><a href="Reserva.html">Reserva</a></li>
+        <li><a href="Contactos.html">Contactos</a></li>
         <li><a href="#" onclick="abrirModalTerminos(event)">Términos y condiciones</a></li>
         <li><a href="#" onclick="abrirModalPrivacidad(event)">Políticas de privacidad</a></li>
         <li class="item-contacto">
