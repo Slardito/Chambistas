@@ -8,22 +8,25 @@
   <link rel="icon" href="img/logo-icon/icon_gula_pura.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Se realizo una vinculación con style.css (CSS) -->
   <link rel="stylesheet" href="style.css">
+  <!-- Se establecio comunicacón con app.js (Java Script) -->
+  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
   <header class="navbar">
     <div class="navbar-container">
       <!-- Logo GULA PURA -->
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <span class="gulapura-text">GULA PURA</span>
       </a>
       <!-- Menú de navegación principal -->
       <nav class="nav-links">
-        <a href="#MENU" class="nav-item">MENÚ</a>
-        <a href="#COMBOS" class="nav-item">COMBOS</a>
-        <a href="#PROMOS" class="nav-item">PROMOS EXCLUSIVAS</a>
+        <a href="index.html#MENU" class="nav-item">MENÚ</a>
+        <a href="index.html#COMBOS" class="nav-item">COMBOS</a>
+        <a href="#index.htmlPROMOS" class="nav-item">PROMOS EXCLUSIVAS</a>
       </nav>
       <!-- Sección de contacto y compra -->
       <div class="navbar-actions">
@@ -35,631 +38,45 @@
         </div>
         <div class="user-info">
           <div class="user-text">
-            <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" target="_blank"
-              rel="noopener noreferrer" class="link-pedido">
+            <a href="Carta.html" target="_blank" rel="noopener noreferrer" class="link-pedido">
               <strong>Realiza tu pedido</strong>
             </a>
           </div>
         </div>
-        <!-- Botón de carrito de compras -->
-        <a href="Carrito.html" class="cart-btn" aria-label="Ver carrito, 0 productos, total S/ 0.00">
-          <span class="cart-icon">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" aria-hidden="true">
-              <path d="M3 5h4l4 17h15M9 10h20l-3 9H11" />
-              <circle cx="13" cy="27" r="1" fill="currentColor" />
-              <circle cx="25" cy="27" r="1" fill="currentColor" />
-            </svg>
-            <span class="cart-count" aria-hidden="true">0</span>
-          </span>
-          <span class="cart-amount" aria-hidden="true">S/ 0.00</span>
-        </a>
       </div>
     </div>
   </header>
-
-  <section class="carta" id="carta">
+  <div class="wrap">
     <h2>Nuestra carta</h2>
-    <div class="slide-container">
-      <div class="slide-content">
-        <div class="slide-wrapper">
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa con Queso.jpg" alt="Hamburguesa con Queso" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa con Queso</h6>
-              <h6 class="descrip">Hamburguesa con carne, tocino crujiente y queso derretido + papas</h6>
-            </div>
-          </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </div>
 
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa Doble Carne & Cheese.jpg"
-                  alt="Hamburguesa Doble Carne & Cheese" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa Doble Carne & Cheese</h6>
-              <h6 class="descrip">Hamburguesa con + 2 carne y queso derretido + papas</h6>
-            </div>
-          </div>
+  <!-- Barra inferior del carrito -->
+  <div class="bar" id="bar" onclick="toggle(true)">
+    <span id="barCount">0 productos</span>
+    <span id="barTotal">S/ 0.00</span>
+  </div>
 
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa Extra Tocino & Cheese.jpg"
-                  alt="Hamburguesa Extra Tocino & Cheese" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa Extra Tocino & Cheese</h6>
-              <h6 class="descrip">Hamburguesa con carne, tocino crujiente y queso derretido + papas</h6>
-            </div>
-          </div>
+  <!-- Panel del pedido -->
+  <aside class="panel" id="panel">
+    <header>Tu pedido <button onclick="toggle(false)" aria-label="Cerrar">&times;</button></header>
+    <div id="items"></div>
+    <div class="foot">
+      <input id="nombre" placeholder="Tu nombre">
+      <textarea id="nota" rows="2" placeholder="Dirección o comentarios (opcional)"></textarea>
+      <div class="total"><span>Total</span><span id="total">S/ 0.00</span></div>
+      <button class="order" id="orderBtn" onclick="pedir()">Realizar pedido por WhatsApp</button>
+    </div>
+  </aside>
 
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa Parrillera.jpg" alt="Hamburguesa Parrillera"
-                  class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa Parrillera</h6>
-              <h6 class="descrip">Hamburguesa con carne, chorizo, cebolla caramelizada y queso derretido + papas</h6>
-            </div>
-          </div>
 
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa a la Pobre.jfif" alt="Hamburguesa a la Pobre"
-                  class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa a la Pobre</h6>
-              <h6 class="descrip">Hamburguesa con +2 carnes, huevo frito y cebolla caramelizada + papas</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa Doble Carne.jfif" alt="Hamburguesa Doble Carne"
-                  class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa Doble Carne</h6>
-              <h6 class="descrip">Hamburguesa con +2 carnes + papas</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa Gringa.jfif" alt="Hamburguesa Gringa" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa Gringa</h6>
-              <h6 class="descrip">Hamburguesa con +2 carnes, chorizo parrillero + papas</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa Hawaiana.jfif" alt="Hamburguesa Hawaiana" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa Hawaiana</h6>
-              <h6 class="descrip">Hamburguesa con carne, piña y queso derretido + papas</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa Simple.jfif" alt="Hamburguesa Simple" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa Simple</h6>
-              <h6 class="descrip">Hamburguesa con carne + papas</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Hamburguesas/Hamburguesa Triple cheese.jfif" alt="Hamburguesa Triple Cheese"
-                  class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Hamburguesa Triple Cheese</h6>
-              <h6 class="descrip">Hamburguesa con +2 carnes y demasiado queso + papas</h6>
-            </div>
-          </div>
-
-          <!-- ALITAS -->
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Alitas/Alitas Simples.jfif" alt="Alitas Simples" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Alitas Simples</h6>
-              <h6 class="descrip">6 Alitas Crujientes</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Alitas/Alitas_BBQ_Picante.jfif" alt="Alitas BBQ Picante" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Alitas BBQ Picante</h6>
-              <h6 class="descrip">6 Alitas Bañadas en Salsa BBQ Picante</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Alitas/Alitas_BBQ.jfif" alt="Alitas BBQ" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Alitas BBQ</h6>
-              <h6 class="descrip">6 Alitas Bañadas en Salsa BBQ</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Alitas/Alitas Bufalo.jfif" alt="Alitas Bufalo" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Alitas Bufalo</h6>
-              <h6 class="descrip">6 Alitas Bañadas en Salsa Búfalo</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Alitas/Alitas al Olivo.jfif" alt="Alitas al Olivo" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Alitas al Olivo</h6>
-              <h6 class="descrip">6 Alitas Bañadas en Salsa al Olivo</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Alitas/Alitas Acevichadas.jfif" alt="Alitas Acevichadas" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Alitas Acevichadas</h6>
-              <h6 class="descrip">6 Alitas Bañadas en Salsa Acevichada</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Alitas/Alitas Ajo Parmesano.jpg" alt="Alitas Ajo Parmesano" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Alitas Ajo Parmesano</h6>
-              <h6 class="descrip">6 Alitas Bañadas en Salsa Ajo Parmesano</h6>
-            </div>
-          </div>
-
-          <!-- SHAWARMAS -->
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Shawarmas/Shawarma Lomo Saltado.jpg" alt="Shawarma de Lomo Saltado" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Shawarma de Lomo Saltado</h6>
-              <h6 class="descrip">Jugosos trozos de lomo saltado al wok con cebolla y tomate wrapped</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Shawarmas/Shawarma a lo pobre.jfif" alt="Shawarma a lo pobre" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Shawarma a lo pobre</h6>
-              <h6 class="descrip">Carne, plátano frito, huevo y papas fritas envueltos en pan pita</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Shawarmas/Shawarma Carne.jfif" alt="Shawarma de Carne" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Shawarma de Carne</h6>
-              <h6 class="descrip">Clásicas tiras de carne sazonada a la parrilla con cremas</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Shawarmas/Shawarma Mediterraneo.jfif" alt="Shawarma Mediterraneo" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Shawarma Mediterraneo</h6>
-              <h6 class="descrip">Tiras de carne con vegetales frescos y un toque de finas hierbas</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Shawarmas/Shawarma Pollo Crunchy.jfif" alt="Shawarma Pollo Crunchy" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Shawarma Pollo Crunchy</h6>
-              <h6 class="descrip">Trozos de pollo súper crujientes con lechuga, papas y cremas</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Shawarmas/Shawarma Pollo.jfif" alt="Shawarma de Pollo" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Shawarma de Pollo</h6>
-              <h6 class="descrip">Láminas de pollo asado sazonadas al estilo tradicional</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Shawarmas/Shawarma Simple.jfif" alt="Shawarma Simple" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Shawarma Simple</h6>
-              <h6 class="descrip">La combinación clásica y ligera de carne y vegetales</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Shawarmas/Shawarma Vegetariano.jfif" alt="Shawarma Vegetariano" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Shawarma Vegetariano</h6>
-              <h6 class="descrip">Mix de vegetales frescos, palta y tofu frito</h6>
-            </div>
-          </div>
-
-          <!-- BEBIDAS -->
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Bebidas/Coca Cola.webp" alt="Coca Cola" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Coca Cola 500 ml</h6>
-              <h6 class="descrip">Coca Cola 500 ml</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Bebidas/Inka Cola.webp" alt="Inca Kola" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Inca Kola 500 ml</h6>
-              <h6 class="descrip">Inca Cola 500 ml</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Bebidas/Sprite.webp" alt="Sprite" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Sprite 500 ml</h6>
-              <h6 class="descrip">Sprite 500 ml</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Bebidas/Fanta.webp" alt="Fanta" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Fanta 500 ml</h6>
-              <h6 class="descrip">Fanta 500 ml</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Bebidas/Pepsi.jpg" alt="Pepsi" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Pepsi 500 ml</h6>
-              <h6 class="descrip">Pepsi 500 ml</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Bebidas/Agua sin gas - San Luis.webp" alt="Agua San Luis Sin Gas 625 ml"
-                  class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Agua San Luis Sin Gas 625 ml</h6>
-              <h6 class="descrip">Agua San Luis Sin Gas 625 ml</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Menu/Bebidas/Agua con gas.jpg" alt="Agua San Luis Con Gas 625 ml" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Agua San Luis Con Gas 625 ml</h6>
-              <h6 class="descrip">Agua San Luis Con Gas 625 ml</h6>
-            </div>
-          </div>
-
-          <!-- COMBOS -->
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Combos/Combo_a_la_pobre.png" alt="Combo a la pobre" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Combo a lo pobre</h6>
-              <h6 class="descrip">1 Hamburguesa A la Pobre + 1 Papa Regular + 1 Bebida Personal</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Combos/Combo_Alaraco.png" alt="Combo Alaraco" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Combo Alaraco</h6>
-              <h6 class="descrip">1 Hamburguesa Alaraco + 1 Papa Regular + 1 Bebida Personal</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Combos/Combo_Broaster_a_lo_pobre.png" alt="Combo Broaster a la Pobre" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Combo Broaster a la Pobre</h6>
-              <h6 class="descrip">1 Hamburguesa Broaster A la Pobre + 1 Papa Regular + 1 Bebida Personal</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Combos/Combo_Extra_Cheese.png" alt="Combo Extra Cheese" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Combo Extra Cheese</h6>
-              <h6 class="descrip">1 Hamburguesa Extra Cheese + 1 Papa Regular + 1 Bebida Personal</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Combos/Combo_Hawaiano.png" alt="Combo Hawaiano" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Combo Hawaiano</h6>
-              <h6 class="descrip">1 Hamburguesa Hawaiana + 1 Papa Regular + 1 Bebida Personal</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Combos/Combo_Parrillero.png" alt="Combo Parrillero" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Combo Parrillero</h6>
-              <h6 class="descrip">1 Hamburguesa Parrillera + 1 Papa Regular + 1 Bebida Personal</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Combos/Combo_Tocino.png" alt="Combo Tocino" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Combo Tocino</h6>
-              <h6 class="descrip">1 Hamburguesa con Tocino + 1 Papa Regular + 1 Bebida Personal</h6>
-            </div>
-          </div>
-
-          <!-- PROMOCIONES -->
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Promociones/Duo_alaraco.png" alt="Duo Alaraco" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Duo Alaraco</h6>
-              <h6 class="descrip">2 Hamburguesas Alaraco + 2 Papas Regulares + 2 Salsas de la Casa</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Promociones/Duo_Broaster.png" alt="Duo Broaster" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Duo Broaster</h6>
-              <h6 class="descrip">2 Hamburguesas Broaster + 2 Papas Regulares + 2 Salsas de la Casa</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Promociones/Trio_dobleburger_cheese.png" alt="Trio Doble carne y queso" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Trio Doble carne y queso</h6>
-              <h6 class="descrip">3 Hamburguesas Doble Carne y Queso + 2 Papas Regulares + 3 Salsas de la Casa</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Promociones/Trio_Hamburguesa_a_la_pobre.png" alt="Trio Hamburguesa a la pobre"
-                  class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Trio Hamburguesa a la pobre</h6>
-              <h6 class="descrip">3 Hamburguesas A la Pobre + 2 Papas Regulares + 3 Salsas de la Casa</h6>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="image-content">
-              <span class="overlay"></span>
-              <div class="card-image">
-                <img src="img/Promociones/Trio_Hawaiano.png" alt="Trio Hawaiano" class="card-img">
-              </div>
-            </div>
-            <div class="card-content">
-              <h6 class="name">Trio Hawaiano</h6>
-              <h6 class="descrip">3 Hamburguesas Hawaianas + 2 Papas Regulares + 3 Salsas de la Casa</h6>
-            </div>
-          </div>
-
-        </div><!-- /.slide-wrapper -->
-      </div><!-- /.slide-content -->
-    </div><!-- /.slide-container -->
-  </section>
-
-  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 <footer class="site-footer">
   <div class="footer-container">
     <!-- Columna 1: Logo y Redes -->
     <div class="footer-column brand-column">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <span class="gulapura-text">GULA PURA</span>
       </a>
 
@@ -680,9 +97,9 @@
     <div class="footer-column">
       <h3>Nuestros Productos</h3>
       <ul>
-        <li><a href="#MENU">Nuestra Carta </a></li>
-        <li><a href="#COMBOS">Combos Salvajes</a></li>
-        <li><a href="#PROMOS">Super Promociones</a></li>
+        <li><a href="index.html#MENU">Nuestra Carta </a></li>
+        <li><a href="index.html#COMBOS">Combos Salvajes</a></li>
+        <li><a href="index.html#PROMOS">Super Promociones</a></li>
       </ul>
     </div>
     <!-- Columna 3: Ayuda -->
@@ -693,8 +110,9 @@
         <li><a href="Nosotros.html">Nosotros</a></li>
         <li><a href="Reserva.html">Reserva</a></li>
         <li><a href="Contactos.html">Contactos</a></li>
-        <li><a href="#" onclick="abrirModalTerminos(event)">Términos y condiciones</a></li>
-        <li><a href="#" onclick="abrirModalPrivacidad(event)">Políticas de privacidad</a></li>
+        <li><a href="horario.html">Horarios y Zonas de Reparto</a></li>
+        <li><a href="Condiciones.html">Términos y condiciones</a></li>
+        <li><a href="Privacidad.html">Políticas de privacidad</a></li>
         <li class="item-contacto">
           <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank"
             rel="noopener noreferrer">
@@ -709,71 +127,7 @@
           </a>
         </li>
       </ul>
-
-      <!-- Ventana flotante : Términos y Condiciones -->
-      <div id="modal-terminos" class="modal-overlay">
-        <div class="modal-contenido">
-          <!-- Aqui se puede ver reflejado un boton para poder cerrar la ventana flotante de Términos y Condiciones -->
-          <span class="btn-cerrar" onclick="cerrarModalTerminos()">&times;</span>
-          <h2>Términos y Condiciones - Gúla Pura</h2>
-          <div class="modal-body">
-            <p>Bienvenido a <strong>Gúla Pura</strong>. A continuación, te presentamos las condiciones que rigen el uso
-              de nuestro sitio web y el proceso de atención y pedidos a través de nuestro canal oficial de
-              <strong>WhatsApp</strong>.
-            </p>
-
-            <h3>1. Canal Oficial de Ventas y Pedidos</h3>
-            <p>Nuestro sitio web funciona como una carta digital interactiva e informativa. El proceso de compra,
-              cotización, selección de productos, confirmación de dirección y pago se gestiona exclusivamente a través
-              de nuestro canal oficial de WhatsApp.</p>
-
-            <h3>2. Cobertura, Envíos y Horarios</h3>
-            <p>La confirmación de si tu dirección se encuentra dentro de nuestra zona de cobertura de delivery se
-              realizará directamente en el chat de WhatsApp al momento de compartir tu ubicación. La atención está
-              sujeta al horario de nuestras cocinas.</p>
-
-            <h3>3. Medios de Pago</h3>
-            <p>Los pagos se coordinan por WhatsApp e incluyen Yape, Plin, transferencias bancarias o efectivo contra
-              entrega (indicando el monto con el que abonarás para llevar el cambio exacto).</p>
-
-            <h3>4. Comprobantes y Libro de Reclamaciones</h3>
-            <p>Puedes solicitar Boleta o Factura electrónica en el chat de WhatsApp. Asimismo, nuestro Libro de
-              Reclamaciones Virtual se encuentra disponible en la parte inferior de la web.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ventana Flotante : Políticas de Privacidad -->
-      <div id="modal-privacidad" class="modal-overlay">
-        <div class="modal-contenido">
-          <!-- Aqui se puede ver reflejado un boton para poder cerrar la ventana flotante de Politicas de Privacidad -->
-          <span class="btn-cerrar" onclick="cerrarModalPrivacidad()">&times;</span>
-          <h2>Políticas de Privacidad - Gúla Pura</h2>
-          <div class="modal-body">
-            <p>En <strong>Gúla Pura</strong> nos comprometemos a proteger la privacidad de tus datos personales conforme
-              a la <strong>Ley N° 29733 (Ley de Protección de Datos Personales del Perú)</strong>.</p>
-
-            <h3>1. Datos Personales Recopilados</h3>
-            <p>Al realizar tus pedidos a través de WhatsApp, podemos solicitarte datos como: nombre completo, número de
-              teléfono, dirección de entrega y datos de facturación.</p>
-
-            <h3>2. Finalidad del Tratamiento de Datos</h3>
-            <p>Tus datos son utilizados exclusivamente para:</p>
-            <ul>
-              <li>Procesar, preparar y coordinar la entrega (delivery) de tus pedidos.</li>
-              <li>Emitir y enviarte el comprobante de pago electrónico correspondiente (Boleta/Factura).</li>
-              <li>Atender consultas o sugerencias enviadas a través de nuestros canales de atención.</li>
-            </ul>
-
-            <h3>3. Confidencialidad y Seguridad</h3>
-            <p>Tus datos personales no serán comercializados ni cedidos a terceros sin tu consentimiento previo, salvo
-              con el personal encargado del reparto o por requerimiento de la autoridad competente.</p>
-
-            <h3>4. Derechos ARCO</h3>
-            <p>Como titular de tus datos personales, puedes ejercer tus derechos de acceso, rectificación, cancelación u
-              oposición escribiéndonos directamente a nuestro canal de WhatsApp.</p>
-          </div>
-        </div>
+      <div>
       </div>
     </div>
     <!-- Columna 4: Contacto & Atención al Cliente (Libro y Sugerencias) -->

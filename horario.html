@@ -4,50 +4,704 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horario de atención | Gula Pura</title>
-  <meta name="description" content="Horario de atención de Gula Pura y si la cocina está abierta ahora.">
+  <title>Horarios y Zonas de Reparto | Gula Pura</title>
+  <meta name="description" content="Horarios de atención del local y del delivery de Gula Pura, zonas de reparto en Trujillo, tiempos de entrega y costos de envío.">
   <link rel="icon" href="img/logo-icon/icon_gula_pura.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="info.css">
   <script src="app.js" defer></script>
-  <!-- negocio.js = datos del negocio; info.js = lógica de estas páginas (en ese orden) -->
+
+  <!-- Estilos exclusivos de esta página (prefijo hz- para no chocar con style.css ni con Bootstrap) -->
+  <style>
+    .pagina-horarios .hz-seccion {
+      padding: 60px 20px 20px;
+    }
+
+    .pagina-horarios .hz-seccion:last-of-type {
+      padding-bottom: 75px;
+    }
+
+    .hz-contenedor {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hz-encabezado {
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .hz-encabezado h2 {
+      color: #111;
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      margin: 8px 0 14px;
+    }
+
+    .hz-encabezado p {
+      color: #62452f;
+      font: 400 1rem/1.7 Arial, sans-serif;
+      margin: 0;
+    }
+
+    /* ---------- Barra de estado (abierto / cerrado) ---------- */
+    .hz-estado {
+      width: calc(100% - 40px);
+      max-width: 1100px;
+      margin: -40px auto 0;
+      position: relative;
+      z-index: 2;
+      background: #181818;
+      color: #fff;
+      border-radius: 16px;
+      padding: 22px 28px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 22px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+    }
+
+    .hz-estado-indicador {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
+      border-radius: 50px;
+      background: #2b2b2b;
+      font: 800 .85rem Arial, sans-serif;
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+
+    .hz-punto {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #9a9a9a;
+      flex-shrink: 0;
+    }
+
+    .hz-estado-indicador.hz-abierto .hz-punto {
+      background: #2ab45d;
+      box-shadow: 0 0 0 0 rgba(42, 180, 93, .7);
+      animation: hz-pulso 1.8s infinite;
+    }
+
+    .hz-estado-indicador.hz-cerrado .hz-punto {
+      background: #ff3333;
+    }
+
+    @keyframes hz-pulso {
+      0% { box-shadow: 0 0 0 0 rgba(42, 180, 93, .7); }
+      70% { box-shadow: 0 0 0 10px rgba(42, 180, 93, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(42, 180, 93, 0); }
+    }
+
+    .hz-estado-texto strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .hz-estado-texto span {
+      color: #c8c8c8;
+      font: 400 .85rem/1.4 Arial, sans-serif;
+    }
+
+    .hz-estado-hora {
+      text-align: right;
+      font-family: Arial, sans-serif;
+    }
+
+    .hz-estado-hora small {
+      display: block;
+      color: #ff9900;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .hz-estado-hora b {
+      font-size: 1.3rem;
+      white-space: nowrap;
+    }
+
+    /* ---------- Tarjetas de horario ---------- */
+    .hz-horarios-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .hz-bloque {
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 5px 16px rgba(0, 0, 0, .07);
+    }
+
+    .hz-bloque-titulo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hz-icono {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #e14f13;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hz-icono svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .hz-bloque-titulo h3 {
+      color: #111;
+      font-size: 1.15rem;
+      margin: 0 0 3px;
+    }
+
+    .hz-bloque-titulo p {
+      color: #806b58;
+      font: 400 .82rem Arial, sans-serif;
+      margin: 0;
+    }
+
+    .hz-lista-dias {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hz-dia {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      font-size: .92rem;
+      color: #2b1a10;
+      border-bottom: 1px dashed #eadfd2;
+    }
+
+    .hz-dia:last-child {
+      border-bottom: 0;
+    }
+
+    .hz-dia-nombre {
+      font-weight: 700;
+    }
+
+    .hz-dia-hora {
+      color: #62452f;
+      text-align: right;
+    }
+
+    .hz-dia.hz-hoy {
+      background: #fff3ea;
+      border-bottom-color: transparent;
+      box-shadow: inset 4px 0 0 #e14f13;
+    }
+
+    .hz-dia.hz-hoy .hz-dia-nombre::after {
+      content: "HOY";
+      margin-left: 8px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      background: #e14f13;
+      color: #fff;
+      font-size: .62rem;
+      letter-spacing: .5px;
+      vertical-align: middle;
+    }
+
+    .hz-nota {
+      margin: 18px 0 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: #f5ebdc;
+      color: #62452f;
+      font: 400 .8rem/1.5 Arial, sans-serif;
+    }
+
+    /* ---------- Zonas de reparto ---------- */
+    .hz-zonas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .hz-zona {
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-top: 6px solid var(--hz-color);
+      border-radius: 14px;
+      padding: 24px 22px;
+      box-shadow: 0 5px 16px rgba(0, 0, 0, .07);
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .hz-zona:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+    }
+
+    .hz-zona-etiqueta {
+      color: var(--hz-color);
+      font: 800 .75rem Arial, sans-serif;
+      letter-spacing: 1.5px;
+    }
+
+    .hz-zona h3 {
+      color: #111;
+      font-size: 1.1rem;
+      margin: 6px 0 14px;
+    }
+
+    .hz-zona ul {
+      list-style: none;
+      margin: 0 0 18px;
+      padding: 0;
+      flex-grow: 1;
+    }
+
+    .hz-zona li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 7px;
+      color: #62452f;
+      font: 400 .86rem/1.4 Arial, sans-serif;
+    }
+
+    .hz-zona li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--hz-color);
+    }
+
+    .hz-zona-datos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      border-top: 1px solid #eee;
+      padding-top: 14px;
+    }
+
+    .hz-zona-datos div {
+      font-family: Arial, sans-serif;
+    }
+
+    .hz-zona-datos small {
+      display: block;
+      color: #806b58;
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .hz-zona-datos b {
+      color: #111;
+      font-size: .95rem;
+    }
+
+    .hz-zona-1 { --hz-color: #2ab45d; }
+    .hz-zona-2 { --hz-color: #ff9900; }
+    .hz-zona-3 { --hz-color: #e14f13; }
+    .hz-zona-4 { --hz-color: #8C5920; }
+
+    /* ---------- Verificador de cobertura ---------- */
+    .hz-verificador {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .hz-verificador-form {
+      background: #181818;
+      color: #fff;
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .hz-verificador-form h3 {
+      font-size: 1.2rem;
+      margin: 8px 0 10px;
+    }
+
+    .hz-verificador-form p {
+      color: #c8c8c8;
+      font: 400 .9rem/1.6 Arial, sans-serif;
+      margin: 0 0 20px;
+    }
+
+    .hz-verificador-form label {
+      display: block;
+      font: 700 .82rem Arial, sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .hz-verificador-form select {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 10px;
+      border: 1px solid #444;
+      background: #111;
+      color: #fff;
+      font: 400 .95rem Arial, sans-serif;
+      outline: none;
+    }
+
+    .hz-verificador-form select:focus {
+      border-color: #e14f13;
+      box-shadow: 0 0 0 3px rgba(225, 79, 19, .3);
+    }
+
+    .hz-resultado {
+      background: #fff;
+      border: 2px dashed #d7c7b7;
+      border-radius: 16px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      color: #62452f;
+      min-height: 230px;
+    }
+
+    .hz-resultado.hz-activo {
+      border: 2px solid var(--hz-color, #e14f13);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .07);
+    }
+
+    .hz-resultado-vacio {
+      text-align: center;
+      font-size: .95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .hz-resultado h3 {
+      font-family: 'Arial Black', Impact, sans-serif;
+      color: #111;
+      font-size: 1.25rem;
+      margin: 6px 0 16px;
+    }
+
+    .hz-resultado-filas {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hz-resultado-filas div {
+      background: #f5ebdc;
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .hz-resultado-filas small {
+      display: block;
+      font-size: .7rem;
+      text-transform: uppercase;
+      color: #806b58;
+      margin-bottom: 4px;
+    }
+
+    .hz-resultado-filas b {
+      color: #111;
+      font-size: .95rem;
+    }
+
+    .hz-btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      align-self: flex-start;
+      background: #2ab45d;
+      color: #fff !important;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font: 800 .78rem Arial, sans-serif;
+      letter-spacing: .5px;
+      text-decoration: none;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+
+    .hz-btn-whatsapp:hover {
+      background: #1a572f;
+      transform: translateY(-1px);
+    }
+
+    /* ---------- Mapa ---------- */
+    .hz-mapa {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e4d9cc;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .07);
+      background: #eadfd2;
+      aspect-ratio: 16 / 7;
+    }
+
+    .hz-mapa iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ---------- Condiciones del delivery ---------- */
+    .hz-condiciones {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .hz-condicion {
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 5px 16px rgba(0, 0, 0, .07);
+    }
+
+    .hz-condicion-num {
+      color: #e14f13;
+      font: 800 1rem Arial, sans-serif;
+      margin-bottom: 14px;
+    }
+
+    .hz-condicion h3 {
+      color: #111;
+      font-size: 1.05rem;
+      margin: 0 0 10px;
+    }
+
+    .hz-condicion p {
+      color: #62452f;
+      font: 400 .88rem/1.6 Arial, sans-serif;
+      margin: 0;
+    }
+
+    /* ---------- Preguntas frecuentes ---------- */
+    .hz-faq details {
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, .05);
+      overflow: hidden;
+    }
+
+    .hz-faq summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 54px 18px 22px;
+      position: relative;
+      color: #111;
+      font: 700 .95rem Arial, sans-serif;
+    }
+
+    .hz-faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .hz-faq summary::after {
+      content: "+";
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #e14f13;
+      color: #fff;
+      font: 700 18px/26px Arial, sans-serif;
+      text-align: center;
+    }
+
+    .hz-faq details[open] summary::after {
+      content: "\2212";
+    }
+
+    .hz-faq details p {
+      margin: 0;
+      padding: 0 22px 20px;
+      color: #62452f;
+      font: 400 .9rem/1.6 Arial, sans-serif;
+    }
+
+    /* ---------- Llamado a la acción ---------- */
+    .hz-cta {
+      background: #181818;
+      border-radius: 18px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      color: #fff;
+    }
+
+    .hz-cta h2 {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      margin: 0 0 8px;
+    }
+
+    .hz-cta h2 span {
+      color: #e14f13;
+    }
+
+    .hz-cta p {
+      color: #c8c8c8;
+      font: 400 .95rem/1.5 Arial, sans-serif;
+      margin: 0;
+    }
+
+    .hz-cta-botones {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    /* ---------- Adaptación a tablet ---------- */
+    @media (max-width: 1000px) {
+      .hz-zonas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hz-horarios-grid,
+      .hz-verificador,
+      .hz-condiciones {
+        grid-template-columns: 1fr;
+      }
+
+      .hz-estado {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        gap: 14px;
+        width: calc(100% - 32px);
+        margin: -30px auto 0;
+      }
+
+      .hz-estado-hora {
+        text-align: center;
+      }
+
+      .hz-cta {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hz-cta-botones {
+        justify-content: center;
+      }
+
+      .hz-mapa {
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+    /* ---------- Adaptación a celular ---------- */
+    @media (max-width: 600px) {
+      .pagina-horarios .hz-seccion {
+        padding: 42px 16px 10px;
+      }
+
+      .pagina-horarios .hz-seccion:last-of-type {
+        padding-bottom: 55px;
+      }
+
+      .hz-zonas-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hz-bloque,
+      .hz-verificador-form,
+      .hz-resultado {
+        padding: 22px 18px;
+      }
+
+      .hz-dia {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 11px 12px;
+        font-size: .9rem;
+      }
+
+      .hz-dia-hora {
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .hz-resultado-filas {
+        grid-template-columns: 1fr;
+      }
+
+      .hz-btn-whatsapp {
+        align-self: stretch;
+      }
+
+      .hz-cta {
+        padding: 30px 20px;
+      }
+
+      .hz-cta-botones,
+      .hz-cta-botones a {
+        width: 100%;
+      }
+
+      .hz-mapa {
+        aspect-ratio: 1 / 1;
+      }
+    }
+  </style>
 </head>
 
-<body>
-<!-- Iconos compartidos (redes, ubicación, reloj, etc.). Se usan con <svg><use href="#i-nombre"/></svg> -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-<symbol id="i-instagram" viewBox="0 0 24 24"><path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0"/><path d="M16.5 7.5v.01"/></symbol>
-<symbol id="i-facebook" viewBox="0 0 24 24"><path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2z"/></symbol>
-<symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M21 7.917v4.034a9.948 9.948 0 0 1-5-1.951v4.5a6.5 6.5 0 1 1-8-6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z"/></symbol>
-<symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></symbol>
-<symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></symbol>
-<symbol id="i-truck" viewBox="0 0 24 24"><path d="M1 4h15v12H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="18.5" cy="18.5" r="2"/></symbol>
-<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
-<symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
-<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
-<symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
-<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h7"/></symbol>
-<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/></symbol>
-</defs></svg>
-
-<header class="navbar">
+<body class="pagina-interna pagina-horarios">
+  <header class="navbar">
     <div class="navbar-container">
-      <!-- Logo GULA PURA -->
-      <a href="index.html" class="logo">
+      <a href="index.html" class="logo" aria-label="Volver al inicio">
         <span class="gulapura-text">GULA PURA</span>
       </a>
-      <!-- Menú de navegación principal -->
-      <nav class="nav-links">
+
+      <nav class="nav-links" aria-label="Navegación principal">
         <a href="index.html#MENU" class="nav-item">MENÚ</a>
         <a href="index.html#COMBOS" class="nav-item">COMBOS</a>
         <a href="index.html#PROMOS" class="nav-item">PROMOS EXCLUSIVAS</a>
       </nav>
-      <!-- Sección de contacto y compra -->
+
       <div class="navbar-actions">
         <div class="phone-info">
           <div class="phone-text">
@@ -57,17 +711,14 @@
         </div>
         <div class="user-info">
           <div class="user-text">
-            <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" target="_blank"
-              rel="noopener noreferrer" class="link-pedido">
+            <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" target="_blank" rel="noopener noreferrer" class="link-pedido">
               <strong>Realiza tu pedido</strong>
             </a>
           </div>
         </div>
-        <!-- Botón de carrito de compras -->
-        <a href="Carrito.html" class="cart-btn" aria-label="Ver carrito, 0 productos, total S/ 0.00">
+        <a href="Carrito.html" class="cart-btn" aria-label="Ver carrito">
           <span class="cart-icon">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M3 5h4l4 17h15M9 10h20l-3 9H11" />
               <circle cx="13" cy="27" r="1" fill="currentColor" />
               <circle cx="25" cy="27" r="1" fill="currentColor" />
@@ -80,235 +731,570 @@
     </div>
   </header>
 
-  <main class="gi">
-    <section class="gi-hero">
-      <span class="gi-fondo" aria-hidden="true">Horario</span>
-      <div class="gi-hero-in">
-        <nav class="gi-migas" aria-label="Ruta de navegación"><a href="index.html">Inicio</a><span aria-hidden="true">›</span><span aria-current="page">Horario de atención</span></nav>
-        <div>
-          <h1>¿Ya abrió la cocina?</h1>
-          <p class="gi-lead">Estos son los horarios en los que atendemos tus pedidos por WhatsApp. Aquí ves al instante si estamos abiertos.</p>
-          <div class="gi-estado" data-estado aria-live="polite"><span class="gi-dot" aria-hidden="true"></span><div><strong data-estado-texto>Revisando…</strong><span class="gi-detalle" data-estado-detalle>&nbsp;</span></div></div>
-        </div>
-        <div class="gi-reloj" aria-live="off"><small>Ahora en Trujillo</small><span class="gi-hora" id="gi-reloj">--:--</span></div>
+  <main>
+    <!-- Portada de la página -->
+    <section class="pagina-hero">
+      <div class="pagina-hero-contenido">
+        <span class="pagina-etiqueta">GULA PURA · TRUJILLO</span>
+        <h1>HORARIOS Y ZONAS DE REPARTO</h1>
+        <p>Revisa cuándo estamos atendiendo y si llegamos hasta tu puerta con toda la gula.</p>
       </div>
     </section>
 
-    <section class="gi-sec">
-      <div class="gi-dos">
-        <div class="gi-comanda">
-          <h2>Horario semanal</h2>
-          <p class="gi-sub" style="margin-bottom:0">Hora de Perú. El día de hoy aparece resaltado.</p>
-          <ul class="gi-semana" id="gi-semana"></ul>
+    <!-- Estado actual: se actualiza solo con la hora de Perú (Lima) -->
+    <div class="hz-estado" role="status" aria-live="polite">
+      <span class="hz-estado-indicador" id="hz-indicador">
+        <span class="hz-punto" aria-hidden="true"></span>
+        <span id="hz-indicador-texto">HORARIO DE HOY</span>
+      </span>
+      <div class="hz-estado-texto">
+        <strong id="hz-estado-titulo">Consulta nuestros horarios</strong>
+        <span id="hz-estado-detalle">Atendemos todos los días de la semana.</span>
+      </div>
+      <div class="hz-estado-hora">
+        <small>HORA EN TRUJILLO</small>
+        <b id="hz-reloj">--:--</b>
+      </div>
+    </div>
+
+    <!-- 1. Horarios -->
+    <section class="hz-seccion" id="horarios">
+      <div class="hz-contenedor">
+        <div class="hz-encabezado">
+          <span class="pagina-mini-titulo">NUESTROS HORARIOS</span>
+          <h2>¿Cuándo atendemos?</h2>
+          <p>Abrimos los 7 días de la semana, tanto en el local como por delivery.</p>
         </div>
 
-        <div class="gi-lateral">
-          <article class="gi-card">
-            <div class="gi-icono"><svg class="gi-i" aria-hidden="true"><use href="#i-chat"/></svg></div>
-            <h3>Pide mientras estemos abiertos</h3>
-            <p>Escríbenos por WhatsApp con la cocina en horario y te confirmamos tu pedido, tu dirección y el total.</p>
+        <div class="hz-horarios-grid">
+          <!-- Horario del local -->
+          <article class="hz-bloque">
+            <div class="hz-bloque-titulo">
+              <div class="hz-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l1.5-5h15L21 9" />
+                  <path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z" />
+                  <path d="M5 13v7h14v-7" />
+                  <path d="M10 20v-4h4v4" />
+                </svg>
+              </div>
+              <div>
+                <h3>Atención en local</h3>
+                <p>Para comer en mesa o recoger tu pedido</p>
+              </div>
+            </div>
+            <ul class="hz-lista-dias" data-horario="local">
+              <li class="hz-dia" data-dias="1 2 3 4 5 6" data-abre="720" data-cierra="1320"><span class="hz-dia-nombre">Lunes a sábado</span><span class="hz-dia-hora">12:00 p.m. – 10:00 p.m.</span></li>
+              <li class="hz-dia" data-dias="0" data-abre="780" data-cierra="1320"><span class="hz-dia-nombre">Domingo</span><span class="hz-dia-hora">1:00 p.m. – 10:00 p.m.</span></li>
+            </ul>
+            <p class="hz-nota">La cocina recibe el último pedido en mesa 30 minutos antes del cierre.</p>
           </article>
-          <article class="gi-card">
-            <div class="gi-icono"><svg class="gi-i" aria-hidden="true"><use href="#i-clock"/></svg></div>
-            <h3>Feriados y fechas especiales</h3>
-            <p>En feriados o fechas especiales el horario puede cambiar. Confirma por WhatsApp antes de pedir.</p>
+
+          <!-- Horario de delivery -->
+          <article class="hz-bloque">
+            <div class="hz-bloque-titulo">
+              <div class="hz-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="17" r="3" />
+                  <circle cx="18" cy="17" r="3" />
+                  <path d="M9 17h6l-2-7H9" />
+                  <path d="M15 17l3-7h-3" />
+                  <path d="M4 10h5" />
+                </svg>
+              </div>
+              <div>
+                <h3>Delivery</h3>
+                <p>Pedidos por WhatsApp al 957 059 897</p>
+              </div>
+            </div>
+            <ul class="hz-lista-dias" data-horario="delivery">
+              <li class="hz-dia" data-dias="1 2 3 4 5 6" data-abre="720" data-cierra="1350"><span class="hz-dia-nombre">Lunes a sábado</span><span class="hz-dia-hora">12:00 p.m. – 10:30 p.m.</span></li>
+              <li class="hz-dia" data-dias="0" data-abre="780" data-cierra="1350"><span class="hz-dia-nombre">Domingo</span><span class="hz-dia-hora">1:00 p.m. – 10:30 p.m.</span></li>
+            </ul>
+            <p class="hz-nota">En feriados atendemos con horario de domingo. Los cambios se avisan por WhatsApp y redes sociales.</p>
           </article>
-          <div class="gi-oscura">
-            <h3>¿Prefieres llamar?</h3>
-            <p>La atención está sujeta al horario de nuestras cocinas.</p>
-            <a class="gi-btn gi-btn-oscuro" style="background:#ffcc00;color:#181818" href="tel:+51957059897"><svg class="gi-i" aria-hidden="true"><use href="#i-whatsapp"/></svg> 957 059 897</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Zonas de reparto -->
+    <section class="hz-seccion" id="zonas">
+      <div class="hz-contenedor">
+        <div class="hz-encabezado">
+          <span class="pagina-mini-titulo">ZONAS DE REPARTO</span>
+          <h2>¿Hasta dónde llegamos?</h2>
+          <p>Repartimos en Trujillo y alrededores. El costo y el tiempo de entrega dependen de la zona en la que te encuentres.</p>
+        </div>
+
+        <div class="hz-zonas-grid">
+          <article class="hz-zona hz-zona-1">
+            <span class="hz-zona-etiqueta">ZONA 1</span>
+            <h3>Trujillo Centro</h3>
+            <ul>
+              <li>Centro Histórico</li>
+              <li>Urb. San Andrés</li>
+              <li>Urb. El Recreo</li>
+              <li>Urb. La Merced</li>
+              <li>Urb. Los Pinos</li>
+            </ul>
+            <div class="hz-zona-datos">
+              <div><small>Envío</small><b>S/ 5.00</b></div>
+              <div><small>Tiempo</small><b>25–35 min</b></div>
+            </div>
+          </article>
+
+          <article class="hz-zona hz-zona-2">
+            <span class="hz-zona-etiqueta">ZONA 2</span>
+            <h3>Trujillo Sur</h3>
+            <ul>
+              <li>Víctor Larco Herrera</li>
+              <li>Urb. California</li>
+              <li>Urb. La Primavera</li>
+              <li>Urb. Santa María</li>
+              <li>Urb. Las Quintanas</li>
+            </ul>
+            <div class="hz-zona-datos">
+              <div><small>Envío</small><b>S/ 7.00</b></div>
+              <div><small>Tiempo</small><b>35–45 min</b></div>
+            </div>
+          </article>
+
+          <article class="hz-zona hz-zona-3">
+            <span class="hz-zona-etiqueta">ZONA 3</span>
+            <h3>Trujillo Norte</h3>
+            <ul>
+              <li>La Esperanza</li>
+              <li>El Porvenir</li>
+              <li>Florencia de Mora</li>
+              <li>Alto Trujillo</li>
+            </ul>
+            <div class="hz-zona-datos">
+              <div><small>Envío</small><b>S/ 9.00</b></div>
+              <div><small>Tiempo</small><b>45–55 min</b></div>
+            </div>
+          </article>
+
+          <article class="hz-zona hz-zona-4">
+            <span class="hz-zona-etiqueta">ZONA 4</span>
+            <h3>Alrededores</h3>
+            <ul>
+              <li>Huanchaco</li>
+              <li>Moche</li>
+              <li>Laredo</li>
+              <li>Salaverry</li>
+            </ul>
+            <div class="hz-zona-datos">
+              <div><small>Envío</small><b>Desde S/ 12</b></div>
+              <div><small>Tiempo</small><b>55–70 min</b></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Verificador de cobertura -->
+    <section class="hz-seccion" id="verificar">
+      <div class="hz-contenedor hz-verificador">
+        <div class="hz-verificador-form">
+          <span class="pagina-mini-titulo">VERIFICA TU ZONA</span>
+          <h3>¿Llegamos a tu casa?</h3>
+          <p>Elige tu distrito o urbanización y te mostramos al instante el costo de envío y el tiempo aproximado de entrega.</p>
+          <label for="hz-distrito">Distrito o urbanización</label>
+          <select id="hz-distrito">
+            <option value="" selected>Selecciona tu zona</option>
+            <optgroup label="Zona 1 · Trujillo Centro">
+              <option value="1">Centro Histórico</option>
+              <option value="1">Urb. San Andrés</option>
+              <option value="1">Urb. El Recreo</option>
+              <option value="1">Urb. La Merced</option>
+              <option value="1">Urb. Los Pinos</option>
+            </optgroup>
+            <optgroup label="Zona 2 · Trujillo Sur">
+              <option value="2">Víctor Larco Herrera</option>
+              <option value="2">Urb. California</option>
+              <option value="2">Urb. La Primavera</option>
+              <option value="2">Urb. Santa María</option>
+              <option value="2">Urb. Las Quintanas</option>
+            </optgroup>
+            <optgroup label="Zona 3 · Trujillo Norte">
+              <option value="3">La Esperanza</option>
+              <option value="3">El Porvenir</option>
+              <option value="3">Florencia de Mora</option>
+              <option value="3">Alto Trujillo</option>
+            </optgroup>
+            <optgroup label="Zona 4 · Alrededores">
+              <option value="4">Huanchaco</option>
+              <option value="4">Moche</option>
+              <option value="4">Laredo</option>
+              <option value="4">Salaverry</option>
+            </optgroup>
+            <optgroup label="Otra ubicación">
+              <option value="0">Mi zona no aparece</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="hz-resultado" id="hz-resultado" aria-live="polite">
+          <p class="hz-resultado-vacio">Selecciona tu zona para ver el costo de envío y el tiempo estimado de entrega.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Mapa de cobertura -->
+    <section class="hz-seccion" id="mapa">
+      <div class="hz-contenedor">
+        <div class="hz-encabezado">
+          <span class="pagina-mini-titulo">MAPA DE COBERTURA</span>
+          <h2>Trujillo, La Libertad</h2>
+          <p>Ubica tu dirección en el mapa. Si estás cerca del límite de una zona, compártenos tu ubicación por WhatsApp y te confirmamos el costo exacto.</p>
+        </div>
+        <div class="hz-mapa">
+          <iframe src="https://www.google.com/maps?q=Trujillo,+La+Libertad,+Peru&z=12&output=embed" title="Mapa de Trujillo con la zona de reparto de Gula Pura" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Condiciones del delivery -->
+    <section class="hz-seccion" id="condiciones">
+      <div class="hz-contenedor">
+        <div class="hz-encabezado">
+          <span class="pagina-mini-titulo">ANTES DE PEDIR</span>
+          <h2>Condiciones del delivery</h2>
+        </div>
+        <div class="hz-condiciones">
+          <article class="hz-condicion">
+            <div class="hz-condicion-num">01</div>
+            <h3>Pedido mínimo</h3>
+            <p>El pedido mínimo para delivery es de S/ 20.00 en las zonas 1, 2 y 3, y de S/ 35.00 en la zona 4.</p>
+          </article>
+          <article class="hz-condicion">
+            <div class="hz-condicion-num">02</div>
+            <h3>Medios de pago</h3>
+            <p>Yape, Plin, transferencia bancaria o efectivo contra entrega. Si pagas en efectivo, indícanos con cuánto pagarás para llevar tu vuelto.</p>
+          </article>
+          <article class="hz-condicion">
+            <div class="hz-condicion-num">03</div>
+            <h3>Tiempos de entrega</h3>
+            <p>Los tiempos son referenciales. En horas punta, fines de semana o con lluvia pueden extenderse unos minutos más.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Preguntas frecuentes -->
+    <section class="hz-seccion" id="preguntas">
+      <div class="hz-contenedor hz-faq">
+        <div class="hz-encabezado">
+          <span class="pagina-mini-titulo">PREGUNTAS FRECUENTES</span>
+          <h2>Resolvemos tus dudas</h2>
+        </div>
+        <details>
+          <summary>¿Puedo programar un pedido para más tarde?</summary>
+          <p>Sí. Escríbenos por WhatsApp dentro de nuestro horario de delivery e indícanos la hora en la que quieres recibir tu pedido.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si mi dirección no aparece en ninguna zona?</summary>
+          <p>Compártenos tu ubicación por WhatsApp. Evaluaremos si podemos llegar y te diremos el costo de envío antes de confirmar el pedido.</p>
+        </details>
+        <details>
+          <summary>¿Puedo recoger mi pedido en el local?</summary>
+          <p>Claro. Haz tu pedido por WhatsApp, elige la opción de recojo y pasa por él dentro del horario de atención del local. No pagas costo de envío.</p>
+        </details>
+        <details>
+          <summary>¿Atienden en feriados?</summary>
+          <p>Sí, en feriados atendemos con el horario de domingo. Cualquier cambio se anuncia con anticipación por nuestros canales oficiales.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 7. Llamado a la acción -->
+    <section class="hz-seccion">
+      <div class="hz-contenedor">
+        <div class="hz-cta">
+          <div>
+            <h2>¿Se te antojó? <span>Pide ahora.</span></h2>
+            <p>Escríbenos por WhatsApp y confirma tu zona, tu pedido y tu forma de pago en un solo chat.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="gi-cierre">
-      <div class="gi-cierre-in">
-        <div>
-          <h2>Tu antojo no espera</h2>
-          <p>Si la cocina está abierta, escríbenos y lo preparamos.</p>
-        </div>
-        <div class="gi-acciones">
-          <a class="gi-btn gi-btn-oscuro" href="index.html#MENU">Ver la carta</a>
-          <a class="gi-btn gi-btn-wa" data-red="whatsapp" href="#" target="_blank" rel="noopener noreferrer"><svg class="gi-i" aria-hidden="true"><use href="#i-whatsapp"/></svg> Hacer mi pedido</a>
+          <div class="hz-cta-botones">
+            <a class="hz-btn-whatsapp" href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" target="_blank" rel="noopener noreferrer">PEDIR POR WHATSAPP</a>
+            <a class="btn-gula-secundario" href="Carta.html">VER CARTA</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-<footer class="site-footer">
+  <footer class="site-footer">
   <div class="footer-container">
-    <!-- Columna 1: Logo y Redes -->
+    <!-- Columna 1: Logo -->
     <div class="footer-column brand-column">
       <a href="index.html" class="footer-logo-link">
         <img src="img/logo-icon/gula_pura_logotipo.png" alt="Logo Gula Pura" class="footer-logo-img">
       </a>
-
-      <!-- Ubicación, estado del horario y redes: el detalle está en las páginas de información -->
-      <a href="zona-de-cobertura.html" class="footer-local">
-        <svg aria-hidden="true"><use href="#i-pin"/></svg>
-        <span>Delivery en <strong>Trujillo, Perú</strong></span>
-      </a>
-      <a href="horario-de-atencion.html" class="footer-estado" data-estado data-corto>
-        <span data-estado-texto>Ver horario de atención</span>
-      </a>
-      <div class="footer-redes" aria-label="Redes sociales">
-        <a href="redes-sociales.html" data-red="instagram" aria-label="Instagram de Gula Pura"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
-        <a href="redes-sociales.html" data-red="facebook" aria-label="Facebook de Gula Pura"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
-        <a href="redes-sociales.html" data-red="tiktok" aria-label="TikTok de Gula Pura"><svg aria-hidden="true"><use href="#i-tiktok"/></svg></a>
-        <a href="redes-sociales.html" data-red="whatsapp" aria-label="WhatsApp de Gula Pura"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
-      </div>
-
-      <!--  Esto por el momento se encuentra en proceso 
-  <p>Síguenos en</p>
-  <div class="social-icons">
-    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-  </div>
--->
     </div>
+
     <!-- Columna 2: Nuestros Productos -->
-    <div class="footer-column">
+    <div class="footer-column products-column">
       <h3>Nuestros Productos</h3>
       <ul>
-        <li><a href="index.html#MENU">Nuestra Carta </a></li>
+        <li><a href="index.html#MENU">Nuestra Carta</a></li>
         <li><a href="index.html#COMBOS">Combos Salvajes</a></li>
         <li><a href="index.html#PROMOS">Super Promociones</a></li>
       </ul>
     </div>
-    <!-- Columna: páginas de información -->
-    <div class="footer-column">
-      <h3>Información</h3>
-      <ul>
-        <li><a href="horario-de-atencion.html">Horario de atención</a></li>
-        <li><a href="zona-de-cobertura.html">Zona de cobertura</a></li>
-        <li><a href="metodos-de-pago.html">Métodos de pago</a></li>
-        <li><a href="redes-sociales.html">Redes sociales</a></li>
-      </ul>
-    </div>
+
     <!-- Columna 3: Ayuda -->
-    <div class="footer-column">
+    <div class="footer-column help-column">
       <h3>Ayuda</h3>
       <ul>
-        <!-- Funciones específicas para abrir cada modal -->
+        <li><a href="Nosotros.html">Nosotros</a></li>
+        <li><a href="Reserva.html">Reserva</a></li>
+        <li><a href="Contactos.html">Contactos</a></li>
+        <li><a href="horario.html">Horarios y Zonas de Reparto</a></li>
         <li><a href="#" onclick="abrirModalTerminos(event)">Términos y condiciones</a></li>
         <li><a href="#" onclick="abrirModalPrivacidad(event)">Políticas de privacidad</a></li>
         <li class="item-contacto">
-          <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank"
-            rel="noopener noreferrer">
-            Contacto: 957 059 897
-          </a>
+          <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank" rel="noopener noreferrer">Contacto: 957 059 897</a>
         </li>
-
         <li class="feedback-container">
-          <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" class="btn-pedido"
-            target="_blank" rel="noopener noreferrer">
-            Realiza tu pedido
-          </a>
+          <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" class="btn-pedido" target="_blank" rel="noopener noreferrer">Realiza tu pedido</a>
         </li>
       </ul>
 
-      <!-- Ventana flotante : Términos y Condiciones -->
+      <!-- Ventana flotante: Términos y Condiciones -->
       <div id="modal-terminos" class="modal-overlay">
         <div class="modal-contenido">
-          <!-- Aqui se puede ver reflejado un boton para poder cerrar la ventana flotante de Términos y Condiciones -->
           <span class="btn-cerrar" onclick="cerrarModalTerminos()">&times;</span>
-          <h2>Términos y Condiciones - Gúla Pura</h2>
+          <h2>Términos y Condiciones - Gula Pura</h2>
           <div class="modal-body">
-            <p>Bienvenido a <strong>Gúla Pura</strong>. A continuación, te presentamos las condiciones que rigen el uso
-              de nuestro sitio web y el proceso de atención y pedidos a través de nuestro canal oficial de
-              <strong>WhatsApp</strong>.
-            </p>
-
+            <p>Bienvenido a <strong>Gula Pura</strong>. A continuación, te presentamos las condiciones que rigen el uso de nuestro sitio web y el proceso de atención y pedidos a través de nuestro canal oficial de <strong>WhatsApp</strong>.</p>
             <h3>1. Canal Oficial de Ventas y Pedidos</h3>
-            <p>Nuestro sitio web funciona como una carta digital interactiva e informativa. El proceso de compra,
-              cotización, selección de productos, confirmación de dirección y pago se gestiona exclusivamente a través
-              de nuestro canal oficial de WhatsApp.</p>
-
+            <p>Nuestro sitio web funciona como una carta digital interactiva e informativa. El proceso de compra, cotización, selección de productos, confirmación de dirección y pago se gestiona exclusivamente a través de nuestro canal oficial de WhatsApp.</p>
             <h3>2. Cobertura, Envíos y Horarios</h3>
-            <p>La confirmación de si tu dirección se encuentra dentro de nuestra zona de cobertura de delivery se
-              realizará directamente en el chat de WhatsApp al momento de compartir tu ubicación. La atención está
-              sujeta al horario de nuestras cocinas.</p>
-
+            <p>La confirmación de si tu dirección se encuentra dentro de nuestra zona de cobertura de delivery se realizará directamente en el chat de WhatsApp al momento de compartir tu ubicación. La atención está sujeta al horario de nuestras cocinas.</p>
             <h3>3. Medios de Pago</h3>
-            <p>Los pagos se coordinan por WhatsApp e incluyen Yape, Plin, transferencias bancarias o efectivo contra
-              entrega (indicando el monto con el que abonarás para llevar el cambio exacto).</p>
-
+            <p>Los pagos se coordinan por WhatsApp e incluyen Yape, Plin, transferencias bancarias o efectivo contra entrega.</p>
             <h3>4. Comprobantes y Libro de Reclamaciones</h3>
-            <p>Puedes solicitar Boleta o Factura electrónica en el chat de WhatsApp. Asimismo, nuestro Libro de
-              Reclamaciones Virtual se encuentra disponible en la parte inferior de la web.</p>
+            <p>Puedes solicitar Boleta o Factura electrónica en el chat de WhatsApp. Asimismo, nuestro Libro de Reclamaciones Virtual se encuentra disponible en la parte inferior de la web.</p>
           </div>
         </div>
       </div>
 
-      <!-- Ventana Flotante : Políticas de Privacidad -->
+      <!-- Ventana flotante: Políticas de Privacidad -->
       <div id="modal-privacidad" class="modal-overlay">
         <div class="modal-contenido">
-          <!-- Aqui se puede ver reflejado un boton para poder cerrar la ventana flotante de Politicas de Privacidad -->
           <span class="btn-cerrar" onclick="cerrarModalPrivacidad()">&times;</span>
-          <h2>Políticas de Privacidad - Gúla Pura</h2>
+          <h2>Políticas de Privacidad - Gula Pura</h2>
           <div class="modal-body">
-            <p>En <strong>Gúla Pura</strong> nos comprometemos a proteger la privacidad de tus datos personales conforme
-              a la <strong>Ley N° 29733 (Ley de Protección de Datos Personales del Perú)</strong>.</p>
-
+            <p>En <strong>Gula Pura</strong> nos comprometemos a proteger la privacidad de tus datos personales conforme a la <strong>Ley N° 29733 (Ley de Protección de Datos Personales del Perú)</strong>.</p>
             <h3>1. Datos Personales Recopilados</h3>
-            <p>Al realizar tus pedidos a través de WhatsApp, podemos solicitarte datos como: nombre completo, número de
-              teléfono, dirección de entrega y datos de facturación.</p>
-
+            <p>Al realizar tus pedidos a través de WhatsApp, podemos solicitarte datos como: nombre completo, número de teléfono, dirección de entrega y datos de facturación.</p>
             <h3>2. Finalidad del Tratamiento de Datos</h3>
-            <p>Tus datos son utilizados exclusivamente para:</p>
-            <ul>
-              <li>Procesar, preparar y coordinar la entrega (delivery) de tus pedidos.</li>
-              <li>Emitir y enviarte el comprobante de pago electrónico correspondiente (Boleta/Factura).</li>
-              <li>Atender consultas o sugerencias enviadas a través de nuestros canales de atención.</li>
-            </ul>
-
+            <p>Tus datos son utilizados exclusivamente para procesar pedidos, coordinar entregas, emitir comprobantes y atender consultas o sugerencias.</p>
             <h3>3. Confidencialidad y Seguridad</h3>
-            <p>Tus datos personales no serán comercializados ni cedidos a terceros sin tu consentimiento previo, salvo
-              con el personal encargado del reparto o por requerimiento de la autoridad competente.</p>
-
+            <p>Tus datos personales no serán comercializados ni cedidos a terceros sin tu consentimiento previo, salvo con el personal encargado del reparto o por requerimiento de la autoridad competente.</p>
             <h3>4. Derechos ARCO</h3>
-            <p>Como titular de tus datos personales, puedes ejercer tus derechos de acceso, rectificación, cancelación u
-              oposición escribiéndonos directamente a nuestro canal de WhatsApp.</p>
+            <p>Como titular de tus datos personales, puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición escribiéndonos directamente a nuestro canal de WhatsApp.</p>
           </div>
         </div>
       </div>
     </div>
-    <!-- Columna 4: Contacto & Atención al Cliente (Libro y Sugerencias) -->
-    <div class="footer-column legal-column">
-      <h3>RECLAMOS & SUGERENCIAS</h3>
 
-      <!-- 1. Libro de Reclamaciones vinculada a libro-de-reclamaciones.html -->
+    <!-- Columna 4: Reclamos y sugerencias -->
+    <div class="footer-column legal-column">
+      <h3>RECLAMOS &amp; SUGERENCIAS</h3>
       <a href="libro-de-reclamaciones.html">
         <img src="img/footer/Libro_reclamos.png" alt="Libro de Reclamaciones" class="libro-img">
       </a>
-
-      <!-- 2. Sugerencias conectado a un Formulario de google -->
       <div class="feedback-container">
         <h3>Tu Opinión Cuenta</h3>
         <p class="feedback-text">¿Tienes alguna idea o sugerencia para nosotros? Queremos escucharte.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGWHN5Qboh4pLPVPXL78QI0LmWeiwGPB_7sudZl1JCkc1D7g/viewform?usp=header"
-          class="btn-sugerencias" target="_blank" rel="noopener noreferrer">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGWHN5Qboh4pLPVPXL78QI0LmWeiwGPB_7sudZl1JCkc1D7g/viewform?usp=header" class="btn-sugerencias" target="_blank" rel="noopener noreferrer">
           Dejar sugerencia
         </a>
       </div>
     </div>
-    <!-- Insignias de medios de pago -->
-    <div class="footer-pagos">
-      <span>Medios de pago</span>
-      <a href="metodos-de-pago.html" aria-label="Yape"><img src="img/pagos/yape.svg" alt="Yape"></a>
-      <a href="metodos-de-pago.html" aria-label="Plin"><img src="img/pagos/plin.svg" alt="Plin"></a>
-      <a href="metodos-de-pago.html" aria-label="Visa"><img src="img/pagos/visa.svg" alt="Visa"></a>
-      <a href="metodos-de-pago.html" aria-label="Mastercard"><img src="img/pagos/mastercard.svg" alt="Mastercard"></a>
-      <a href="metodos-de-pago.html" aria-label="Transferencia bancaria"><img src="img/pagos/transferencia.svg" alt="Transferencia bancaria"></a>
-      <a href="metodos-de-pago.html" aria-label="Efectivo"><img src="img/pagos/efectivo.svg" alt="Efectivo"></a>
-    </div>
-    <!-- En el pie del footer se colocaron los Derechos Reservados -->
+
     <div class="footer-bottom" id="footer-bottom">
       <span>&copy; 2026 Gula Pura. Todos los derechos reservados.</span>
     </div>
+  </div>
 </footer>
-</body>
 
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript exclusivo de esta página: estado abierto/cerrado y verificador de zona -->
+  <script>
+    (function () {
+      'use strict';
+
+      const NOMBRES_DIA = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+      // Datos de cada zona (deben coincidir con las tarjetas de arriba)
+      const ZONAS = {
+        1: { nombre: 'Zona 1 · Trujillo Centro', envio: 'S/ 5.00', tiempo: '25–35 min', minimo: 'S/ 20.00', color: '#2ab45d' },
+        2: { nombre: 'Zona 2 · Trujillo Sur', envio: 'S/ 7.00', tiempo: '35–45 min', minimo: 'S/ 20.00', color: '#ff9900' },
+        3: { nombre: 'Zona 3 · Trujillo Norte', envio: 'S/ 9.00', tiempo: '45–55 min', minimo: 'S/ 20.00', color: '#e14f13' },
+        4: { nombre: 'Zona 4 · Alrededores', envio: 'Desde S/ 12', tiempo: '55–70 min', minimo: 'S/ 35.00', color: '#8C5920' }
+      };
+
+      // Obtiene día y minutos actuales en hora de Perú (America/Lima)
+      function horaPeru() {
+        const ahora = new Date();
+        try {
+          const partes = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Lima', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+          }).formatToParts(ahora);
+          const dato = (tipo) => (partes.find((p) => p.type === tipo) || {}).value;
+          const dias = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+          const h = parseInt(dato('hour'), 10) % 24;
+          const m = parseInt(dato('minute'), 10);
+          const d = dias[dato('weekday')];
+          if (!isNaN(h) && !isNaN(m) && d !== undefined) return { dia: d, minutos: h * 60 + m };
+        } catch (e) { /* Si el navegador no soporta zonas horarias, se usa la hora del dispositivo */ }
+        return { dia: ahora.getDay(), minutos: ahora.getHours() * 60 + ahora.getMinutes() };
+      }
+
+      // Convierte minutos (ej. 1350) a texto (ej. "10:30 p.m.")
+      function aTexto(minutos) {
+        const h24 = Math.floor(minutos / 60) % 24;
+        const m = minutos % 60;
+        const sufijo = h24 < 12 ? 'a.m.' : 'p.m.';
+        const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+        return h12 + ':' + String(m).padStart(2, '0') + ' ' + sufijo;
+      }
+
+      // Lee el horario de un día desde los atributos data- del HTML
+      function horarioDe(tipo, dia) {
+        const fila = document.querySelector('[data-horario="' + tipo + '"] [data-dias~="' + dia + '"]');
+        if (!fila) return null;
+        return { abre: Number(fila.dataset.abre), cierra: Number(fila.dataset.cierra) };
+      }
+
+      const indicador = document.getElementById('hz-indicador');
+      const indicadorTexto = document.getElementById('hz-indicador-texto');
+      const titulo = document.getElementById('hz-estado-titulo');
+      const detalle = document.getElementById('hz-estado-detalle');
+      const reloj = document.getElementById('hz-reloj');
+
+      function actualizarEstado() {
+        const { dia, minutos } = horaPeru();
+        if (reloj) reloj.textContent = aTexto(minutos);
+
+        // Resalta el día de hoy en ambas listas
+        document.querySelectorAll('.hz-dia').forEach((fila) => {
+          fila.classList.toggle('hz-hoy', fila.dataset.dias.split(' ').map(Number).includes(dia));
+        });
+
+        const local = horarioDe('local', dia);
+        const delivery = horarioDe('delivery', dia);
+        if (!local || !delivery || !indicador) return;
+
+        const localAbierto = minutos >= local.abre && minutos < local.cierra;
+        const deliveryAbierto = minutos >= delivery.abre && minutos < delivery.cierra;
+
+        indicador.classList.remove('hz-abierto', 'hz-cerrado');
+
+        if (localAbierto || deliveryAbierto) {
+          indicador.classList.add('hz-abierto');
+          indicadorTexto.textContent = 'ABIERTO AHORA';
+          if (localAbierto && deliveryAbierto) {
+            titulo.textContent = 'Local y delivery atendiendo';
+            detalle.textContent = 'Local hasta las ' + aTexto(local.cierra) + ' · Delivery hasta las ' + aTexto(delivery.cierra);
+          } else {
+            titulo.textContent = 'Solo delivery disponible';
+            detalle.textContent = 'El local ya cerró. Recibimos pedidos hasta las ' + aTexto(delivery.cierra);
+          }
+        } else {
+          indicador.classList.add('hz-cerrado');
+          indicadorTexto.textContent = 'CERRADO';
+          if (minutos < local.abre) {
+            titulo.textContent = 'Abrimos hoy a las ' + aTexto(Math.min(local.abre, delivery.abre));
+            detalle.textContent = 'Hoy ' + NOMBRES_DIA[dia] + ' atendemos el local hasta las ' + aTexto(local.cierra);
+          } else {
+            const manana = (dia + 1) % 7;
+            const horarioManana = horarioDe('local', manana);
+            titulo.textContent = 'Ya cerramos por hoy';
+            detalle.textContent = horarioManana
+              ? 'Te esperamos el ' + NOMBRES_DIA[manana] + ' desde las ' + aTexto(horarioManana.abre)
+              : 'Te esperamos mañana.';
+          }
+        }
+      }
+
+      actualizarEstado();
+      setInterval(actualizarEstado, 30000);
+
+      // ----- Verificador de zona -----
+      const selector = document.getElementById('hz-distrito');
+      const resultado = document.getElementById('hz-resultado');
+
+      function mostrarResultado() {
+        if (!selector || !resultado) return;
+        const valor = selector.value;
+        const opcion = selector.options[selector.selectedIndex];
+        const lugar = opcion ? opcion.textContent.trim() : '';
+        resultado.replaceChildren();
+        resultado.classList.remove('hz-activo');
+        resultado.style.removeProperty('--hz-color');
+
+        if (valor === '') {
+          const p = document.createElement('p');
+          p.className = 'hz-resultado-vacio';
+          p.textContent = 'Selecciona tu zona para ver el costo de envío y el tiempo estimado de entrega.';
+          resultado.append(p);
+          return;
+        }
+
+        const etiqueta = document.createElement('span');
+        etiqueta.className = 'pagina-mini-titulo';
+        const h3 = document.createElement('h3');
+        const boton = document.createElement('a');
+        boton.className = 'hz-btn-whatsapp';
+        boton.target = '_blank';
+        boton.rel = 'noopener noreferrer';
+
+        if (valor === '0') {
+          etiqueta.textContent = 'CONSULTA ESPECIAL';
+          h3.textContent = 'Te ayudamos a confirmarlo';
+          const p = document.createElement('p');
+          p.style.margin = '0 0 20px';
+          p.style.lineHeight = '1.6';
+          p.textContent = 'Envíanos tu ubicación por WhatsApp y te diremos si podemos llegar y cuánto cuesta el envío.';
+          boton.href = 'https://wa.me/51957059897?text=' + encodeURIComponent('Hola, quisiera saber si hacen delivery a mi zona.');
+          boton.textContent = 'CONSULTAR POR WHATSAPP';
+          resultado.append(etiqueta, h3, p, boton);
+          resultado.classList.add('hz-activo');
+          return;
+        }
+
+        const zona = ZONAS[valor];
+        if (!zona) return;
+        resultado.style.setProperty('--hz-color', zona.color);
+        resultado.classList.add('hz-activo');
+        etiqueta.textContent = '¡SÍ LLEGAMOS!';
+        etiqueta.style.color = zona.color;
+        h3.textContent = lugar + ' · ' + zona.nombre;
+
+        const filas = document.createElement('div');
+        filas.className = 'hz-resultado-filas';
+        [['Envío', zona.envio], ['Tiempo', zona.tiempo], ['Pedido mínimo', zona.minimo]].forEach(([nombre, valorDato]) => {
+          const caja = document.createElement('div');
+          const small = document.createElement('small');
+          small.textContent = nombre;
+          const b = document.createElement('b');
+          b.textContent = valorDato;
+          caja.append(small, b);
+          filas.append(caja);
+        });
+
+        boton.href = 'https://wa.me/51957059897?text=' + encodeURIComponent('Hola, quisiera realizar un pedido para ' + lugar + '.');
+        boton.textContent = 'PEDIR A ' + lugar.toUpperCase();
+        resultado.append(etiqueta, h3, filas, boton);
+      }
+
+      if (selector) selector.addEventListener('change', mostrarResultado);
+    })();
+  </script>
+</body>
 </html>

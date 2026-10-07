@@ -14,16 +14,17 @@
 <body class="pagina-interna pagina-reserva">
   <header class="navbar">
     <div class="navbar-container">
-      <a href="index.html" class="logo" aria-label="Volver al inicio">
+      <!-- Logo GULA PURA -->
+      <a href="index.html" class="logo">
         <span class="gulapura-text">GULA PURA</span>
       </a>
-
-      <nav class="nav-links" aria-label="Navegación principal">
+      <!-- Menú de navegación principal -->
+      <nav class="nav-links">
         <a href="index.html#MENU" class="nav-item">MENÚ</a>
         <a href="index.html#COMBOS" class="nav-item">COMBOS</a>
         <a href="index.html#PROMOS" class="nav-item">PROMOS EXCLUSIVAS</a>
       </nav>
-
+      <!-- Sección de contacto y compra -->
       <div class="navbar-actions">
         <div class="phone-info">
           <div class="phone-text">
@@ -33,26 +34,15 @@
         </div>
         <div class="user-info">
           <div class="user-text">
-            <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" target="_blank" rel="noopener noreferrer" class="link-pedido">
+            <a href="Carta.html" target="_blank"
+              rel="noopener noreferrer" class="link-pedido">
               <strong>Realiza tu pedido</strong>
             </a>
           </div>
         </div>
-        <a href="Carrito.html" class="cart-btn" aria-label="Ver carrito">
-          <span class="cart-icon">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M3 5h4l4 17h15M9 10h20l-3 9H11" />
-              <circle cx="13" cy="27" r="1" fill="currentColor" />
-              <circle cx="25" cy="27" r="1" fill="currentColor" />
-            </svg>
-            <span class="cart-count" aria-hidden="true">0</span>
-          </span>
-          <span class="cart-amount" aria-hidden="true">S/ 0.00</span>
-        </a>
       </div>
     </div>
   </header>
-
   <main>
     <section class="pagina-hero">
   <div class="pagina-hero-contenido">
@@ -120,103 +110,88 @@
   </div>
 </section>
   </main>
-
-  <footer class="site-footer">
+<footer class="site-footer">
   <div class="footer-container">
-    <!-- Columna 1: Logo -->
+    <!-- Columna 1: Logo y Redes -->
     <div class="footer-column brand-column">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <span class="gulapura-text">GULA PURA</span>
       </a>
-    </div>
 
+      <div class="social-icons">
+        <a href="https://facebook.com/tu-pagina" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/tu-usuario" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@tu-usuario" target="_blank" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </div>
+
+    </div>
     <!-- Columna 2: Nuestros Productos -->
-    <div class="footer-column products-column">
+    <div class="footer-column">
       <h3>Nuestros Productos</h3>
       <ul>
-        <li><a href="index.html#MENU">Nuestra Carta</a></li>
-        <li><a href="index.html#COMBOS">Combos Salvajes</a></li>
-        <li><a href="index.html#PROMOS">Super Promociones</a></li>
+        <li><a href="#MENU">Nuestra Carta </a></li>
+        <li><a href="#COMBOS">Combos Salvajes</a></li>
+        <li><a href="#PROMOS">Super Promociones</a></li>
       </ul>
     </div>
-
     <!-- Columna 3: Ayuda -->
-    <div class="footer-column help-column">
+    <div class="footer-column">
       <h3>Ayuda</h3>
       <ul>
+        <!-- Funciones específicas para abrir cada modal -->
         <li><a href="Nosotros.html">Nosotros</a></li>
         <li><a href="Reserva.html">Reserva</a></li>
         <li><a href="Contactos.html">Contactos</a></li>
-        <li><a href="#" onclick="abrirModalTerminos(event)">Términos y condiciones</a></li>
-        <li><a href="#" onclick="abrirModalPrivacidad(event)">Políticas de privacidad</a></li>
+        <li><a href="Condiciones.html">Términos y condiciones</a></li>
+        <li><a href="Privacidad.html">Políticas de privacidad</a></li>
+        <li><a href="horario.html">Horarios de atención</a></li>
         <li class="item-contacto">
-          <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank" rel="noopener noreferrer">Contacto: 957 059 897</a>
+          <a href="https://wa.me/51957059897?text=Hola,%20tengo%20una%20consulta" target="_blank"
+            rel="noopener noreferrer">
+            Contacto: 957 059 897
+          </a>
         </li>
+
         <li class="feedback-container">
-          <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" class="btn-pedido" target="_blank" rel="noopener noreferrer">Realiza tu pedido</a>
+          <a href="https://wa.me/51957059897?text=Hola,%20quisiera%20realizar%20un%20pedido" class="btn-pedido"
+            target="_blank" rel="noopener noreferrer">
+            Realiza tu pedido
+          </a>
         </li>
       </ul>
-
-      <!-- Ventana flotante: Términos y Condiciones -->
-      <div id="modal-terminos" class="modal-overlay">
-        <div class="modal-contenido">
-          <span class="btn-cerrar" onclick="cerrarModalTerminos()">&times;</span>
-          <h2>Términos y Condiciones - Gula Pura</h2>
-          <div class="modal-body">
-            <p>Bienvenido a <strong>Gula Pura</strong>. A continuación, te presentamos las condiciones que rigen el uso de nuestro sitio web y el proceso de atención y pedidos a través de nuestro canal oficial de <strong>WhatsApp</strong>.</p>
-            <h3>1. Canal Oficial de Ventas y Pedidos</h3>
-            <p>Nuestro sitio web funciona como una carta digital interactiva e informativa. El proceso de compra, cotización, selección de productos, confirmación de dirección y pago se gestiona exclusivamente a través de nuestro canal oficial de WhatsApp.</p>
-            <h3>2. Cobertura, Envíos y Horarios</h3>
-            <p>La confirmación de si tu dirección se encuentra dentro de nuestra zona de cobertura de delivery se realizará directamente en el chat de WhatsApp al momento de compartir tu ubicación. La atención está sujeta al horario de nuestras cocinas.</p>
-            <h3>3. Medios de Pago</h3>
-            <p>Los pagos se coordinan por WhatsApp e incluyen Yape, Plin, transferencias bancarias o efectivo contra entrega.</p>
-            <h3>4. Comprobantes y Libro de Reclamaciones</h3>
-            <p>Puedes solicitar Boleta o Factura electrónica en el chat de WhatsApp. Asimismo, nuestro Libro de Reclamaciones Virtual se encuentra disponible en la parte inferior de la web.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ventana flotante: Políticas de Privacidad -->
-      <div id="modal-privacidad" class="modal-overlay">
-        <div class="modal-contenido">
-          <span class="btn-cerrar" onclick="cerrarModalPrivacidad()">&times;</span>
-          <h2>Políticas de Privacidad - Gula Pura</h2>
-          <div class="modal-body">
-            <p>En <strong>Gula Pura</strong> nos comprometemos a proteger la privacidad de tus datos personales conforme a la <strong>Ley N° 29733 (Ley de Protección de Datos Personales del Perú)</strong>.</p>
-            <h3>1. Datos Personales Recopilados</h3>
-            <p>Al realizar tus pedidos a través de WhatsApp, podemos solicitarte datos como: nombre completo, número de teléfono, dirección de entrega y datos de facturación.</p>
-            <h3>2. Finalidad del Tratamiento de Datos</h3>
-            <p>Tus datos son utilizados exclusivamente para procesar pedidos, coordinar entregas, emitir comprobantes y atender consultas o sugerencias.</p>
-            <h3>3. Confidencialidad y Seguridad</h3>
-            <p>Tus datos personales no serán comercializados ni cedidos a terceros sin tu consentimiento previo, salvo con el personal encargado del reparto o por requerimiento de la autoridad competente.</p>
-            <h3>4. Derechos ARCO</h3>
-            <p>Como titular de tus datos personales, puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición escribiéndonos directamente a nuestro canal de WhatsApp.</p>
-          </div>
-        </div>
+      <div>
       </div>
     </div>
-
-    <!-- Columna 4: Reclamos y sugerencias -->
+    <!-- Columna 4: Contacto & Atención al Cliente (Libro y Sugerencias) -->
     <div class="footer-column legal-column">
-      <h3>RECLAMOS &amp; SUGERENCIAS</h3>
+      <h3>RECLAMOS & SUGERENCIAS</h3>
+
+      <!-- 1. Libro de Reclamaciones vinculada a libro-de-reclamaciones.html -->
       <a href="libro-de-reclamaciones.html">
         <img src="img/footer/Libro_reclamos.png" alt="Libro de Reclamaciones" class="libro-img">
       </a>
+
+      <!-- 2. Sugerencias conectado a un Formulario de google -->
       <div class="feedback-container">
         <h3>Tu Opinión Cuenta</h3>
         <p class="feedback-text">¿Tienes alguna idea o sugerencia para nosotros? Queremos escucharte.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGWHN5Qboh4pLPVPXL78QI0LmWeiwGPB_7sudZl1JCkc1D7g/viewform?usp=header" class="btn-sugerencias" target="_blank" rel="noopener noreferrer">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGWHN5Qboh4pLPVPXL78QI0LmWeiwGPB_7sudZl1JCkc1D7g/viewform?usp=header"
+          class="btn-sugerencias" target="_blank" rel="noopener noreferrer">
           Dejar sugerencia
         </a>
       </div>
     </div>
-
+    <!-- En el pie del footer se colocaron los Derechos Reservados -->
     <div class="footer-bottom" id="footer-bottom">
       <span>&copy; 2026 Gula Pura. Todos los derechos reservados.</span>
     </div>
-  </div>
 </footer>
-
   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
